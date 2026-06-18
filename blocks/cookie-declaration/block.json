@@ -1,0 +1,23 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "crumbler/cookie-declaration",
+    "version": "1.0.0",
+    "title": "Cookie Declaration",
+    "category": "widgets",
+    "icon": "shield",
+    "description": "Displays the Crumbler cookie declaration with all detected services and cookies.",
+    "textdomain": "crumbler-cookie-consent",
+    "keywords": ["cookie", "consent", "gdpr", "crumbler"],
+    "supports": {
+        "html": false,
+        "multiple": false
+    },
+    "attributes": {
+        "lang": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "editorScript": "file:./editor.js"
+}
