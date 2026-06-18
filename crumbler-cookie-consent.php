@@ -259,6 +259,81 @@ class Crumbler_Cookie_Consent {
     }
 
     // =========================================================================
+    // Service status check
+    // =========================================================================
+
+    /**
+     * Query the Crumbler service for the real status of this site/domain.
+     *
+     * The result is cached in a transient so we do not hit the service on every
+     * settings page load. Returns an array with a 'state' of:
+     *   active        – domain is set up and active (widget is served)
+     *   inactive      – site key unknown or domain not active (HTTP 404)
+     *   host_mismatch – domain not authorised for this site key (HTTP 403)
+     *   unknown       – service unreachable / could not verify
+     *
+     * @return array
+     */
+    private function get_service_status() {
+        $site_key = get_option(self::OPTION_PREFIX . 'site_key', '');
+        $host = wp_parse_url(home_url(), PHP_URL_HOST);
+
+        if (empty($site_key) || empty($host)) {
+            return ['state' => 'unknown', 'host' => (string) $host];
+        }
+
+        $cache_key = 'crumbler_cc_status_' . md5($site_key . '|' . $host);
+        $cached = get_transient($cache_key);
+        if (is_array($cached)) {
+            return $cached;
+        }
+
+        $url = $this->get_api_base_url() . '/api/public/config?siteKey=' . urlencode($site_key) . '&host=' . urlencode($host);
+        $response = wp_remote_get($url, [
+            'timeout' => 5,
+            'headers' => ['Accept' => 'application/json'],
+        ]);
+
+        if (is_wp_error($response)) {
+            $status = ['state' => 'unknown', 'host' => $host];
+        } else {
+            $code = (int) wp_remote_retrieve_response_code($response);
+            if ($code === 200) {
+                $body = json_decode(wp_remote_retrieve_body($response), true);
+                $status = [
+                    'state'     => 'active',
+                    'host'      => $host,
+                    'site_name' => (is_array($body) && !empty($body['site_name'])) ? $body['site_name'] : '',
+                ];
+            } elseif ($code === 403) {
+                $status = ['state' => 'host_mismatch', 'host' => $host];
+            } elseif ($code === 404) {
+                $status = ['state' => 'inactive', 'host' => $host];
+            } else {
+                $status = ['state' => 'unknown', 'host' => $host];
+            }
+        }
+
+        set_transient($cache_key, $status, 5 * MINUTE_IN_SECONDS);
+        return $status;
+    }
+
+    /**
+     * Flush the cached service status when the user clicks "Re-check now".
+     */
+    private function maybe_flush_status_cache() {
+        if (!isset($_GET['crumbler_recheck'])) {
+            return;
+        }
+        if (!isset($_GET['_wpnonce']) || !wp_verify_nonce(sanitize_key(wp_unslash($_GET['_wpnonce'])), 'crumbler_cc_recheck')) {
+            return;
+        }
+        $site_key = get_option(self::OPTION_PREFIX . 'site_key', '');
+        $host = wp_parse_url(home_url(), PHP_URL_HOST);
+        delete_transient('crumbler_cc_status_' . md5($site_key . '|' . $host));
+    }
+
+    // =========================================================================
     // Render: Settings Page
     // =========================================================================
 
@@ -266,6 +341,8 @@ class Crumbler_Cookie_Consent {
         if (!current_user_can('manage_options')) {
             return;
         }
+
+        $this->maybe_flush_status_cache();
 
         $site_key = get_option(self::OPTION_PREFIX . 'site_key', '');
         $enabled = get_option(self::OPTION_PREFIX . 'enabled', false);
@@ -287,16 +364,54 @@ class Crumbler_Cookie_Consent {
                 <div class="notice notice-warning">
                     <p><strong><?php esc_html_e('Warning:', 'crumbler-cookie-consent'); ?></strong> <?php esc_html_e('The widget is enabled but no Site Key has been entered. The widget will not work without a Site Key.', 'crumbler-cookie-consent'); ?></p>
                 </div>
-            <?php elseif ($enabled && !empty($site_key)): ?>
-                <div class="notice notice-success">
-                    <p><?php
-                        printf(
-                            /* translators: %s: bold "active" */
-                            esc_html__('The Cookie Consent Widget is %s and displayed on all pages.', 'crumbler-cookie-consent'),
-                            '<strong>' . esc_html__('active', 'crumbler-cookie-consent') . '</strong>'
-                        );
-                    ?></p>
-                </div>
+            <?php elseif ($enabled && !empty($site_key)):
+                $status = $this->get_service_status();
+                $recheck = wp_nonce_url(
+                    add_query_arg(['page' => 'crumbler-cookie-consent', 'crumbler_recheck' => '1'], admin_url('options-general.php')),
+                    'crumbler_cc_recheck'
+                );
+                $host_code = '<code>' . esc_html($status['host']) . '</code>';
+            ?>
+                <?php if ($status['state'] === 'active'): ?>
+                    <div class="notice notice-success">
+                        <p><?php
+                            if (!empty($status['site_name'])) {
+                                printf(
+                                    /* translators: 1: site name, 2: domain */
+                                    esc_html__('Connected to Crumbler: %1$s is set up and active for %2$s. The widget is being served.', 'crumbler-cookie-consent'),
+                                    '<strong>' . esc_html($status['site_name']) . '</strong>',
+                                    $host_code
+                                );
+                            } else {
+                                printf(
+                                    /* translators: %s: domain */
+                                    esc_html__('Connected to Crumbler: this domain (%s) is set up and active. The widget is being served.', 'crumbler-cookie-consent'),
+                                    $host_code
+                                );
+                            }
+                        ?></p>
+                    </div>
+                <?php elseif ($status['state'] === 'host_mismatch'): ?>
+                    <div class="notice notice-warning">
+                        <p><?php
+                            printf(
+                                /* translators: %s: domain */
+                                esc_html__('This domain (%s) is not authorised for the entered Site Key. Add it to the allowed domains of this site in your Crumbler dashboard. Until then the widget will not be displayed.', 'crumbler-cookie-consent'),
+                                $host_code
+                            );
+                        ?> <a href="<?php echo esc_url($recheck); ?>"><?php esc_html_e('Re-check now', 'crumbler-cookie-consent'); ?></a></p>
+                    </div>
+                <?php elseif ($status['state'] === 'inactive'): ?>
+                    <div class="notice notice-warning">
+                        <p><?php esc_html_e('The Site Key is unknown to Crumbler, or this domain is not active yet (for example the subscription or trial is not set up). The widget will not be displayed until the domain is added and active in your Crumbler dashboard.', 'crumbler-cookie-consent'); ?>
+                        <a href="<?php echo esc_url($recheck); ?>"><?php esc_html_e('Re-check now', 'crumbler-cookie-consent'); ?></a></p>
+                    </div>
+                <?php else: ?>
+                    <div class="notice notice-info">
+                        <p><?php esc_html_e('The Crumbler service status could not be verified right now (service unreachable). The widget script is still embedded on all pages.', 'crumbler-cookie-consent'); ?>
+                        <a href="<?php echo esc_url($recheck); ?>"><?php esc_html_e('Re-check now', 'crumbler-cookie-consent'); ?></a></p>
+                    </div>
+                <?php endif; ?>
             <?php endif; ?>
 
             <form method="post" action="options.php">
