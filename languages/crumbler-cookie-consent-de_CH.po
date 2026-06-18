@@ -1,160 +1,238 @@
-# German translation for Compresso CMP - Cookie Consent
-# Copyright (C) 2026 Samuel Rüegger
-# This file is distributed under the GPL v2 or later.
+# Crumbler – Cookie Consent translation (de_CH).
+# Copyright (C) 2026 Compresso AG
+# This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Compresso CMP - Cookie Consent 1.3.1\n"
-"Report-Msgid-Bugs-To: https://cmp.compresso.ch\n"
-"POT-Creation-Date: 2026-02-18 14:00+0000\n"
-"PO-Revision-Date: 2026-02-18 14:00+0000\n"
-"Last-Translator: Samuel Rüegger <samuel@rueegger.me>\n"
-"Language-Team: German\n"
-"Language: de_DE\n"
+"Project-Id-Version: crumbler-cookie-consent 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/crumbler-cookie-consent\n"
+"Language-Team: German (Switzerland)\n"
+"Language: de_CH\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: crumbler-cookie-consent\n"
 
-#: compresso-cmp.php
+#. Plugin Name of the plugin
+#: crumbler-cookie-consent.php
+msgid "Crumbler – Cookie Consent"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: crumbler-cookie-consent.php
+msgid "https://crumbler.ch"
+msgstr ""
+
+#. Description of the plugin
+#: crumbler-cookie-consent.php
+msgid "Connects your website to the Crumbler cookie consent service: consent banner, automatic script & iframe blocking, cookie declaration and Google Consent Mode v2."
+msgstr "Verbindet Ihre Website mit dem Crumbler Cookie-Consent-Dienst: Consent-Banner, automatisches Script- & iFrame-Blocking, Cookie-Erklärung und Google Consent Mode v2."
+
+#. Author of the plugin
+#: crumbler-cookie-consent.php
+msgid "Compresso AG"
+msgstr ""
+
+#. Author URI of the plugin
+#: crumbler-cookie-consent.php
+msgid "https://compresso.ch"
+msgstr ""
+
+#: crumbler-cookie-consent.php:76
+#: blocks/cookie-declaration/editor.js:33
 msgid "Settings"
-msgstr "Einstellungen"
+msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:88
 msgid "General Settings"
 msgstr "Allgemeine Einstellungen"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:101
 msgid "Enable Widget"
 msgstr "Widget aktivieren"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:115
 msgid "Site Key"
-msgstr "Site Key"
+msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:129
+#: blocks/cookie-declaration/editor.js:35
 msgid "Language"
 msgstr "Sprache"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:138
 msgid "Advanced Settings"
 msgstr "Erweiterte Einstellungen"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:151
 msgid "Widget URL"
-msgstr "Widget URL"
+msgstr "Widget-URL"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:165
 msgid "Hide for Admins"
-msgstr "Im Admin ausblenden"
+msgstr "Für Administratoren ausblenden"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:181
 msgid "The Site Key must be in UUID format (e.g. af232e06-59c2-4810-b09d-7a2b25632d1b)."
-msgstr "Der Site Key muss im UUID-Format sein (z.B. af232e06-59c2-4810-b09d-7a2b25632d1b)."
+msgstr "Der Site Key muss im UUID-Format vorliegen (z. B. af232e06-59c2-4810-b09d-7a2b25632d1b)."
 
-#: compresso-cmp.php
-msgid "Connect your website with the Compresso Cookie Management Platform."
-msgstr "Verbinden Sie Ihre Website mit der Compresso Cookie Management Platform."
+#: crumbler-cookie-consent.php:201
+msgid "Connect your website to the Crumbler cookie consent service."
+msgstr "Verbinden Sie Ihre Website mit dem Crumbler Cookie-Consent-Dienst."
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:205
 msgid "Optional settings for special requirements."
-msgstr "Optionale Einstellungen für spezielle Anforderungen."
+msgstr "Optionale Einstellungen für besondere Anforderungen."
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:216
 msgid "Show Cookie Consent Widget on the website"
-msgstr "Cookie Consent Widget auf der Website anzeigen"
+msgstr "Cookie-Consent-Widget auf der Website anzeigen"
 
-#: compresso-cmp.php
+#. translators: %s: link to Crumbler Dashboard
+#: crumbler-cookie-consent.php:225
+#, php-format
 msgid "You can find the Site Key in the %s under the respective site."
 msgstr "Den Site Key finden Sie im %s unter der jeweiligen Site."
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:233
 msgid "Automatic (browser language)"
 msgstr "Automatisch (Browser-Sprache)"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:244
 msgid "When set to \"Automatic\", the widget detects the visitor's browser language."
-msgstr "Bei \"Automatisch\" erkennt das Widget die Sprache des Besuchers."
+msgstr "Bei „Automatisch“ erkennt das Widget die Browser-Sprache des Besuchers."
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:250
 msgid "Only change if you run your own widget instance. Leave empty for default."
 msgstr "Nur ändern, wenn Sie eine eigene Widget-Instanz betreiben. Leer lassen für Standard."
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:257
 msgid "Hide widget for logged-in administrators"
 msgstr "Widget für eingeloggte Administratoren ausblenden"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:357
+msgid "Cookie Consent"
+msgstr ""
+
+#: crumbler-cookie-consent.php:365
 msgid "Warning:"
-msgstr "Achtung:"
+msgstr "Warnung:"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:365
 msgid "The widget is enabled but no Site Key has been entered. The widget will not work without a Site Key."
-msgstr "Das Widget ist aktiviert, aber es wurde noch kein Site Key eingetragen. Das Widget wird ohne Site Key nicht funktionieren."
+msgstr "Das Widget ist aktiviert, aber es wurde kein Site Key eingegeben. Ohne Site Key funktioniert das Widget nicht."
 
-#: compresso-cmp.php
-msgid "The Cookie Consent Widget is %s and displayed on all pages."
-msgstr "Das Cookie Consent Widget ist %s und wird auf allen Seiten angezeigt."
+#. translators: 1: site name, 2: domain
+#: crumbler-cookie-consent.php:380
+#, php-format
+msgid "Connected to Crumbler: %1$s is set up and active for %2$s. The widget is being served."
+msgstr "Mit Crumbler verbunden: %1$s ist für %2$s eingerichtet und aktiv. Das Widget wird ausgeliefert."
 
-#: compresso-cmp.php
-msgid "active"
-msgstr "aktiv"
+#. translators: %s: domain
+#: crumbler-cookie-consent.php:387
+#, php-format
+msgid "Connected to Crumbler: this domain (%s) is set up and active. The widget is being served."
+msgstr "Mit Crumbler verbunden: Diese Domain (%s) ist eingerichtet und aktiv. Das Widget wird ausgeliefert."
 
-#: compresso-cmp.php
+#. translators: %s: domain
+#: crumbler-cookie-consent.php:398
+#, php-format
+msgid "This domain (%s) is not authorised for the entered Site Key. Add it to the allowed domains of this site in your Crumbler dashboard. Until then the widget will not be displayed."
+msgstr "Diese Domain (%s) ist für den eingegebenen Site Key nicht freigegeben. Fügen Sie sie in Ihrem Crumbler-Dashboard zu den erlaubten Domains dieser Site hinzu. Bis dahin wird das Widget nicht angezeigt."
+
+#: crumbler-cookie-consent.php:401
+#: crumbler-cookie-consent.php:406
+#: crumbler-cookie-consent.php:411
+msgid "Re-check now"
+msgstr "Jetzt neu prüfen"
+
+#: crumbler-cookie-consent.php:405
+msgid "The Site Key is unknown to Crumbler, or this domain is not active yet (for example the subscription or trial is not set up). The widget will not be displayed until the domain is added and active in your Crumbler dashboard."
+msgstr "Der Site Key ist Crumbler unbekannt oder diese Domain ist noch nicht aktiv (z. B. Abo oder Testphase nicht eingerichtet). Das Widget wird erst angezeigt, wenn die Domain in Ihrem Crumbler-Dashboard hinzugefügt und aktiv ist."
+
+#: crumbler-cookie-consent.php:410
+msgid "The Crumbler service status could not be verified right now (service unreachable). The widget script is still embedded on all pages."
+msgstr "Der Crumbler-Dienststatus konnte gerade nicht geprüft werden (Dienst nicht erreichbar). Das Widget-Script wird trotzdem auf allen Seiten eingebunden."
+
+#: crumbler-cookie-consent.php:420
 msgid "Save Settings"
 msgstr "Einstellungen speichern"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:425
 msgid "Integration Code"
-msgstr "Integrations-Code"
+msgstr "Integrationscode"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:427
 msgid "The plugin automatically adds the following code to the <head> section:"
-msgstr "Das Plugin fügt folgenden Code automatisch in den <head>-Bereich ein:"
+msgstr "Das Plugin fügt automatisch den folgenden Code im <head>-Bereich ein:"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:431
+#: crumbler-cookie-consent.php:440
+#: blocks/cookie-declaration/editor.js:13
+#: blocks/cookie-declaration/editor.js:53
 msgid "Cookie Declaration"
 msgstr "Cookie-Erklärung"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:433
 msgid "The cookie declaration displays all detected services and cookies, grouped by category. You can embed it in two ways:"
-msgstr "Die Cookie-Erklärung zeigt alle erkannten Dienste und Cookies an, gruppiert nach Kategorie. Sie können sie auf zwei Arten einbinden:"
+msgstr "Die Cookie-Erklärung zeigt alle erkannten Dienste und Cookies, gruppiert nach Kategorie. Sie können sie auf zwei Arten einbinden:"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:435
 msgid "Gutenberg Block"
 msgstr "Gutenberg-Block"
 
-#: compresso-cmp.php
+#. translators: %s: bold block name
+#: crumbler-cookie-consent.php:439
+#, php-format
 msgid "Add the %s block via the block editor. The language can optionally be overridden in the block settings."
-msgstr "Fügen Sie den Block %s über den Block-Editor ein. Die Sprache kann optional im Block überschrieben werden."
+msgstr "Fügen Sie den Block %s über den Block-Editor ein. Die Sprache kann in den Block-Einstellungen optional überschrieben werden."
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:444
 msgid "Shortcode"
-msgstr "Shortcode"
+msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:445
 msgid "Use the following shortcode on any page or post:"
-msgstr "Verwenden Sie folgenden Shortcode in beliebigen Seiten oder Beiträgen:"
+msgstr "Verwenden Sie den folgenden Shortcode auf einer beliebigen Seite oder einem Beitrag:"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:447
 msgid "Optionally with a language parameter:"
-msgstr "Optional mit Sprach-Parameter:"
+msgstr "Optional mit einem Sprachparameter:"
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:576
 msgid "View Cookie Declaration"
-msgstr "Cookie-Erklärung anzeigen"
+msgstr "Cookie-Erklärung ansehen"
 
-#: blocks/cookie-declaration/editor.js
-msgid "Displays the Compresso CMP cookie declaration."
-msgstr "Zeigt die Cookie-Erklärung der Compresso CMP an."
+#: blocks/cookie-declaration/editor.js:14
+msgid "Displays the Crumbler cookie declaration."
+msgstr "Zeigt die Crumbler-Cookie-Erklärung an."
 
-#: blocks/cookie-declaration/editor.js
+#: blocks/cookie-declaration/editor.js:36
 msgid "Leave empty to use the plugin setting."
 msgstr "Leer lassen, um die Plugin-Einstellung zu verwenden."
 
-#: blocks/cookie-declaration/editor.js
+#: blocks/cookie-declaration/editor.js:39
 msgid "Use plugin setting"
 msgstr "Plugin-Einstellung verwenden"
 
-#: blocks/cookie-declaration/editor.js
-msgid "Displays the cookie declaration with all detected services and cookies. Data is automatically loaded from the CMP API on the frontend."
-msgstr "Zeigt die Cookie-Erklärung mit allen erkannten Diensten und Cookies an. Die Daten werden im Frontend automatisch von der CMP-API geladen."
+#: blocks/cookie-declaration/editor.js:54
+msgid "Displays the cookie declaration with all detected services and cookies. Data is automatically loaded from the Crumbler API on the frontend."
+msgstr "Zeigt die Cookie-Erklärung mit allen erkannten Diensten und Cookies an. Die Daten werden im Frontend automatisch von der Crumbler-API geladen."
+
+msgid "Cookie Declaration"
+msgstr "Cookie-Erklärung"
+
+msgid "Displays the Crumbler cookie declaration with all detected services and cookies."
+msgstr "Zeigt die Crumbler-Cookie-Erklärung mit allen erkannten Diensten und Cookies an."
+
+msgid "cookie"
+msgstr ""
+
+msgid "consent"
+msgstr ""
+
+msgid "gdpr"
+msgstr ""
+
+msgid "crumbler"
+msgstr ""
