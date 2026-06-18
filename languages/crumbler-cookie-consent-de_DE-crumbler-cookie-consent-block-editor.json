@@ -1,0 +1,22 @@
+{
+    "translation-revision-date": "2026-02-18 14:00+0000",
+    "generator": "hand",
+    "source": "blocks/cookie-declaration/editor.js",
+    "domain": "compresso-cmp",
+    "locale_data": {
+        "compresso-cmp": {
+            "": {
+                "domain": "compresso-cmp",
+                "lang": "de",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Cookie Declaration": ["Cookie-Erkl\u00e4rung"],
+            "Displays the Compresso CMP cookie declaration.": ["Zeigt die Cookie-Erkl\u00e4rung der Compresso CMP an."],
+            "Settings": ["Einstellungen"],
+            "Language": ["Sprache"],
+            "Leave empty to use the plugin setting.": ["Leer lassen, um die Plugin-Einstellung zu verwenden."],
+            "Use plugin setting": ["Plugin-Einstellung verwenden"],
+            "Displays the cookie declaration with all detected services and cookies. Data is automatically loaded from the CMP API on the frontend.": ["Zeigt die Cookie-Erkl\u00e4rung mit allen erkannten Diensten und Cookies an. Die Daten werden im Frontend automatisch von der CMP-API geladen."]
+        }
+    }
+}
