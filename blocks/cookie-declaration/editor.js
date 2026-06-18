@@ -51,7 +51,7 @@
                 el(Placeholder, {
                     icon: 'shield',
                     label: __('Cookie Declaration', 'crumbler-cookie-consent') + ' (Crumbler)',
-                    instructions: __('Displays the cookie declaration with all detected services and cookies. Data is automatically loaded from the CMP API on the frontend.', 'crumbler-cookie-consent')
+                    instructions: __('Displays the cookie declaration with all detected services and cookies. Data is automatically loaded from the Crumbler API on the frontend.', 'crumbler-cookie-consent')
                 })
             );
         },
