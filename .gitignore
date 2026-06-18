@@ -12,3 +12,6 @@ Thumbs.db
 /build/
 composer.lock
 package-lock.json
+
+# Built release archives
+/*.zip

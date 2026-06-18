@@ -9,6 +9,7 @@
 /vendor
 /tests
 /build
+/bin
 
 .gitignore
 .distignore
