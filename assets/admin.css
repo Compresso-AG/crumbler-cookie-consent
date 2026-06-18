@@ -153,3 +153,95 @@
     border-left-width: 6px;
     border-radius: 0;
 }
+
+/* ---------- Form controls: 8-bit text inputs & selects ---------- */
+.crumbler-cc-wrap input[type="text"],
+.crumbler-cc-wrap input[type="url"],
+.crumbler-cc-wrap input[type="email"],
+.crumbler-cc-wrap select {
+    background-color: var(--cr-paper);
+    border: 2px solid var(--cr-ink);
+    border-radius: 0;
+    box-shadow: 3px 3px 0 rgba(28, 28, 28, 0.18);
+    color: var(--cr-ink);
+    padding: 7px 10px;
+    line-height: 1.4;
+    transition: box-shadow 0.06s ease, transform 0.06s ease;
+}
+
+.crumbler-cc-wrap input[type="text"]:focus,
+.crumbler-cc-wrap input[type="url"]:focus,
+.crumbler-cc-wrap input[type="email"]:focus,
+.crumbler-cc-wrap select:focus {
+    border-color: var(--cr-ink);
+    box-shadow: 3px 3px 0 var(--cr-cookie);
+    outline: none;
+}
+
+.crumbler-cc-wrap input[type="text"]::placeholder,
+.crumbler-cc-wrap input[type="url"]::placeholder {
+    color: #9a8f74;
+}
+
+/* ---------- Cooler 8-bit checkboxes ---------- */
+.crumbler-cc-wrap input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin: 0 9px 0 0;
+    padding: 0;
+    flex: 0 0 auto;
+    vertical-align: -6px;
+    cursor: pointer;
+    background: var(--cr-paper);
+    border: 2px solid var(--cr-ink);
+    border-radius: 0;
+    box-shadow: 3px 3px 0 rgba(28, 28, 28, 0.22);
+    transition: background 0.1s ease, box-shadow 0.06s ease, transform 0.06s ease;
+}
+
+.crumbler-cc-wrap input[type="checkbox"]:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 rgba(28, 28, 28, 0.28);
+}
+
+.crumbler-cc-wrap input[type="checkbox"]:checked {
+    background: var(--cr-cookie);
+    box-shadow: 3px 3px 0 var(--cr-ink);
+}
+
+/* Neutralise WordPress' default dashicon checkmark */
+.crumbler-cc-wrap input[type="checkbox"]:checked::before {
+    content: none;
+}
+
+/* Hand-drawn pixel checkmark */
+.crumbler-cc-wrap input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid var(--cr-ink);
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.crumbler-cc-wrap input[type="checkbox"]:focus {
+    outline: 2px solid var(--cr-cookie-d);
+    outline-offset: 2px;
+}
+
+.crumbler-cc-wrap input[type="checkbox"]:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0 0 0 var(--cr-ink);
+}
+
+/* Keep checkbox + label text comfortably aligned */
+.crumbler-cc-wrap .form-table label {
+    display: inline-flex;
+    align-items: center;
+}
