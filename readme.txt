@@ -58,8 +58,8 @@ The plugin does not contact the service until you enter a Site Key and enable th
 No data is sent to any party other than the Crumbler service.
 
 * Service provider: Compresso AG
-* Terms of Service: https://crumbler.ch/agb *(TODO: confirm final URL before submission)*
-* Privacy Policy: https://crumbler.ch/datenschutz *(TODO: confirm final URL before submission)*
+* Terms of Service: https://crumbler.ch/agb.php
+* Privacy Policy: https://crumbler.ch/datenschutz.php
 
 == Frequently Asked Questions ==
 
