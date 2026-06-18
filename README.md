@@ -1,5 +1,7 @@
 # Crumbler – Cookie Consent
 
+![Crumbler – Cookie Consent](.wordpress-org/banner-772x250.png)
+
 WordPress plugin that connects your website to the **[Crumbler](https://crumbler.ch)** cookie consent service. It loads the consent widget, blocks third-party scripts and iframes before consent, supports Google Consent Mode v2, and renders a cookie declaration via a Gutenberg block or shortcode.
 
 > **Serviceware, not trialware.** Crumbler is a hosted service (SaaS) operated by Compresso AG. A Crumbler account and a site key are required for the widget to work. The **plugin itself is free and fully open source** (GPL-2.0-or-later); the paid functionality lives entirely in the service.
@@ -12,6 +14,16 @@ WordPress plugin that connects your website to the **[Crumbler](https://crumbler
 - Google Consent Mode v2 support
 - Cookie declaration as Gutenberg block (`block.json`) and shortcode `[crumbler_cookies]`
 - Multi-language: DE, FR, IT, EN
+
+## Screenshots
+
+**Settings page** — enter your Site Key and see the live connection status.
+
+![Crumbler settings page](.wordpress-org/screenshot-1.png)
+
+**“Cookie Declaration” block** in the editor.
+
+![Cookie Declaration block](.wordpress-org/screenshot-2.png)
 
 ## Requirements
 
