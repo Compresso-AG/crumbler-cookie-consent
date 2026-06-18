@@ -41,7 +41,7 @@ msgstr ""
 #: crumbler-cookie-consent.php:76
 #: blocks/cookie-declaration/editor.js:33
 msgid "Settings"
-msgstr ""
+msgstr "Réglages"
 
 #: crumbler-cookie-consent.php:88
 msgid "General Settings"
@@ -219,20 +219,32 @@ msgstr "Utiliser le réglage de l'extension"
 msgid "Displays the cookie declaration with all detected services and cookies. Data is automatically loaded from the Crumbler API on the frontend."
 msgstr "Affiche la déclaration de cookies avec tous les services et cookies détectés. Les données sont automatiquement chargées depuis l'API Crumbler côté visiteur."
 
+#: blocks/cookie-declaration/block.json
+msgctxt "block title"
 msgid "Cookie Declaration"
 msgstr "Déclaration de cookies"
 
+#: blocks/cookie-declaration/block.json
+msgctxt "block description"
 msgid "Displays the Crumbler cookie declaration with all detected services and cookies."
 msgstr "Affiche la déclaration de cookies Crumbler avec tous les services et cookies détectés."
 
+#: blocks/cookie-declaration/block.json
+msgctxt "block keyword"
 msgid "cookie"
 msgstr ""
 
+#: blocks/cookie-declaration/block.json
+msgctxt "block keyword"
 msgid "consent"
 msgstr ""
 
+#: blocks/cookie-declaration/block.json
+msgctxt "block keyword"
 msgid "gdpr"
 msgstr ""
 
+#: blocks/cookie-declaration/block.json
+msgctxt "block keyword"
 msgid "crumbler"
 msgstr ""
