@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<ruleset name="Crumbler Cookie Consent">
+    <description>WordPress Coding Standards for the Crumbler – Cookie Consent plugin.</description>
+
+    <file>.</file>
+
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/languages/*</exclude-pattern>
+
+    <arg name="extensions" value="php"/>
+    <arg name="colors"/>
+    <arg value="sp"/>
+
+    <rule ref="WordPress"/>
+
+    <!--
+        The plugin main file must be named after the plugin slug
+        (crumbler-cookie-consent.php), and the block editor asset file must be
+        named editor.asset.php to match its editor.js script (WordPress block
+        asset convention). Both are required names, so the file-name sniff is
+        scoped to exclude exactly these two files.
+    -->
+    <rule ref="WordPress.Files.FileName">
+        <exclude-pattern>crumbler-cookie-consent.php</exclude-pattern>
+        <exclude-pattern>blocks/cookie-declaration/editor.asset.php</exclude-pattern>
+    </rule>
+
+    <config name="minimum_wp_version" value="5.0"/>
+
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array">
+                <element value="crumbler-cookie-consent"/>
+            </property>
+        </properties>
+    </rule>
+
+    <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+        <properties>
+            <property name="prefixes" type="array">
+                <element value="crumbler_cc"/>
+                <element value="Crumbler_Cookie_Consent"/>
+            </property>
+        </properties>
+    </rule>
+</ruleset>

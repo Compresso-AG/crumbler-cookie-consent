@@ -15,7 +15,7 @@
 .editorconfig
 .gitattributes
 README.md
-phpcs.xml.dist
+phpcs.xml
 composer.json
 composer.lock
 package.json
