@@ -23,10 +23,19 @@ class Crumbler_Cookie_Consent {
     const OPTION_PREFIX = 'crumbler_cc_';
     const SERVICE_URL = 'https://cmp.compresso.ch';
     const WIDGET_URL = 'https://cmp.compresso.ch/widget/cmp.min.js';
+    const VERSION = '1.0.0';
+
+    /**
+     * Hook suffix of the settings page (used to scope admin assets).
+     *
+     * @var string
+     */
+    private $settings_hook = '';
 
     public function __construct() {
         add_action('admin_menu', [$this, 'add_settings_page']);
         add_action('admin_init', [$this, 'register_settings']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_assets']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_widget_script'], 1);
         add_action('init', [$this, 'register_block_and_shortcode']);
         add_filter('plugin_action_links_' . plugin_basename(__FILE__), [$this, 'add_settings_link']);
@@ -36,12 +45,27 @@ class Crumbler_Cookie_Consent {
      * Add settings page under Settings menu
      */
     public function add_settings_page() {
-        add_options_page(
+        $this->settings_hook = add_options_page(
             'Crumbler',
             'Crumbler',
             'manage_options',
             'crumbler-cookie-consent',
             [$this, 'render_settings_page']
+        );
+    }
+
+    /**
+     * Enqueue the branded admin stylesheet, but only on this plugin's settings page.
+     */
+    public function enqueue_admin_assets($hook) {
+        if ($hook !== $this->settings_hook) {
+            return;
+        }
+        wp_enqueue_style(
+            'crumbler-cookie-consent-admin',
+            plugins_url('assets/admin.css', __FILE__),
+            [],
+            self::VERSION
         );
     }
 
@@ -246,8 +270,16 @@ class Crumbler_Cookie_Consent {
         $site_key = get_option(self::OPTION_PREFIX . 'site_key', '');
         $enabled = get_option(self::OPTION_PREFIX . 'enabled', false);
         ?>
-        <div class="wrap">
-            <h1>Crumbler - Cookie Consent</h1>
+        <div class="wrap crumbler-cc-wrap">
+            <h1 class="screen-reader-text">Crumbler &ndash; Cookie Consent</h1>
+
+            <div class="crumbler-cc-header">
+                <img class="crumbler-cc-header__logo" src="<?php echo esc_url(plugins_url('assets/crumbler-logo.svg', __FILE__)); ?>" alt="" width="52" height="52">
+                <div class="crumbler-cc-header__text">
+                    <span class="crumbler-cc-header__wordmark">CRUMBLER</span>
+                    <span class="crumbler-cc-header__tagline"><?php esc_html_e('Cookie Consent', 'crumbler-cookie-consent'); ?></span>
+                </div>
+            </div>
 
             <?php settings_errors(); ?>
 
@@ -276,29 +308,31 @@ class Crumbler_Cookie_Consent {
             </form>
 
             <?php if (!empty($site_key)): ?>
-                <hr>
                 <h2><?php esc_html_e('Integration Code', 'crumbler-cookie-consent'); ?></h2>
-                <p><?php esc_html_e('The plugin automatically adds the following code to the <head> section:', 'crumbler-cookie-consent'); ?></p>
-                <pre style="background: #f0f0f0; padding: 12px; border-radius: 4px; overflow-x: auto;"><code>&lt;script src="<?php echo esc_html($this->get_widget_url()); ?>"&gt;&lt;/script&gt;</code></pre>
+                <div class="crumbler-cc-card">
+                    <p><?php esc_html_e('The plugin automatically adds the following code to the <head> section:', 'crumbler-cookie-consent'); ?></p>
+                    <pre><code>&lt;script src="<?php echo esc_html($this->get_widget_url()); ?>"&gt;&lt;/script&gt;</code></pre>
+                </div>
 
-                <hr>
                 <h2><?php esc_html_e('Cookie Declaration', 'crumbler-cookie-consent'); ?></h2>
-                <p><?php esc_html_e('The cookie declaration displays all detected services and cookies, grouped by category. You can embed it in two ways:', 'crumbler-cookie-consent'); ?></p>
+                <div class="crumbler-cc-card">
+                    <p><?php esc_html_e('The cookie declaration displays all detected services and cookies, grouped by category. You can embed it in two ways:', 'crumbler-cookie-consent'); ?></p>
 
-                <h3><?php esc_html_e('Gutenberg Block', 'crumbler-cookie-consent'); ?></h3>
-                <p><?php
-                    printf(
-                        /* translators: %s: bold block name */
-                        esc_html__('Add the %s block via the block editor. The language can optionally be overridden in the block settings.', 'crumbler-cookie-consent'),
-                        '<strong>&laquo;' . esc_html__('Cookie Declaration', 'crumbler-cookie-consent') . '&raquo;</strong>'
-                    );
-                ?></p>
+                    <h3><?php esc_html_e('Gutenberg Block', 'crumbler-cookie-consent'); ?></h3>
+                    <p><?php
+                        printf(
+                            /* translators: %s: bold block name */
+                            esc_html__('Add the %s block via the block editor. The language can optionally be overridden in the block settings.', 'crumbler-cookie-consent'),
+                            '<strong>&laquo;' . esc_html__('Cookie Declaration', 'crumbler-cookie-consent') . '&raquo;</strong>'
+                        );
+                    ?></p>
 
-                <h3><?php esc_html_e('Shortcode', 'crumbler-cookie-consent'); ?></h3>
-                <p><?php esc_html_e('Use the following shortcode on any page or post:', 'crumbler-cookie-consent'); ?></p>
-                <pre style="background: #f0f0f0; padding: 12px; border-radius: 4px;"><code>[crumbler_cookies]</code></pre>
-                <p><?php esc_html_e('Optionally with a language parameter:', 'crumbler-cookie-consent'); ?></p>
-                <pre style="background: #f0f0f0; padding: 12px; border-radius: 4px;"><code>[crumbler_cookies lang="fr"]</code></pre>
+                    <h3><?php esc_html_e('Shortcode', 'crumbler-cookie-consent'); ?></h3>
+                    <p><?php esc_html_e('Use the following shortcode on any page or post:', 'crumbler-cookie-consent'); ?></p>
+                    <pre><code>[crumbler_cookies]</code></pre>
+                    <p><?php esc_html_e('Optionally with a language parameter:', 'crumbler-cookie-consent'); ?></p>
+                    <pre><code>[crumbler_cookies lang="fr"]</code></pre>
+                </div>
             <?php endif; ?>
         </div>
         <?php

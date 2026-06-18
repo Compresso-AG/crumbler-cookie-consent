@@ -1,0 +1,155 @@
+/* =========================================================================
+   Crumbler – Cookie Consent · admin theme
+   8-bit / pixel aesthetic, scoped to the plugin settings page only.
+   Palette derived from the Crumbler cookie logo:
+     cream #efe1bb · cookie #a37b61 · ink #1c1c1c
+   ========================================================================= */
+
+@font-face {
+    font-family: 'Press Start 2P';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(fonts/press-start-2p-latin.woff2) format('woff2');
+}
+
+.crumbler-cc-wrap {
+    --cr-cream: #efe1bb;
+    --cr-cream-2: #e6d4a3;
+    --cr-paper: #fffdf7;
+    --cr-cookie: #a37b61;
+    --cr-cookie-d: #835f49;
+    --cr-ink: #1c1c1c;
+    --cr-pixel: 'Press Start 2P', monospace;
+    max-width: 920px;
+}
+
+/* ---------- Header banner ---------- */
+.crumbler-cc-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 20px 0 26px;
+    padding: 22px 26px;
+    color: var(--cr-ink);
+    background-color: var(--cr-cream);
+    background-image: radial-gradient(var(--cr-cream-2) 1.4px, transparent 1.5px);
+    background-size: 12px 12px;
+    border: 3px solid var(--cr-ink);
+    box-shadow: 6px 6px 0 var(--cr-ink);
+}
+
+.crumbler-cc-header__logo {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 auto;
+    image-rendering: pixelated;
+}
+
+.crumbler-cc-header__text {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.crumbler-cc-header__wordmark {
+    font-family: var(--cr-pixel);
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+.crumbler-cc-header__tagline {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    opacity: 0.7;
+}
+
+/* ---------- Section titles ---------- */
+.crumbler-cc-wrap h2 {
+    font-family: var(--cr-pixel);
+    font-size: 13px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    color: var(--cr-ink);
+    margin-top: 34px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--cr-ink);
+}
+
+.crumbler-cc-wrap h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+/* ---------- Info cards ---------- */
+.crumbler-cc-card {
+    margin: 16px 0 8px;
+    padding: 4px 22px 18px;
+    background: var(--cr-paper);
+    border: 3px solid var(--cr-ink);
+    box-shadow: 4px 4px 0 var(--cr-ink);
+}
+
+.crumbler-cc-card pre {
+    margin: 8px 0 16px;
+    padding: 13px 15px;
+    overflow-x: auto;
+    color: var(--cr-cream);
+    background: var(--cr-ink);
+    border: none;
+    border-radius: 0;
+    font-size: 13px;
+}
+
+.crumbler-cc-card pre code {
+    color: inherit;
+    background: none;
+}
+
+/* ---------- Primary button → arcade cookie button ---------- */
+.crumbler-cc-wrap .button-primary {
+    background: var(--cr-cookie);
+    border: 2px solid var(--cr-ink);
+    border-radius: 0;
+    color: var(--cr-ink);
+    font-weight: 700;
+    text-shadow: none;
+    box-shadow: 3px 3px 0 var(--cr-ink);
+    transition: transform 0.05s ease, box-shadow 0.05s ease, background 0.1s ease;
+}
+
+.crumbler-cc-wrap .button-primary:hover,
+.crumbler-cc-wrap .button-primary:focus {
+    background: var(--cr-cookie-d);
+    border-color: var(--cr-ink);
+    color: var(--cr-cream);
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--cr-ink);
+}
+
+.crumbler-cc-wrap .button-primary:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--cr-ink);
+}
+
+/* ---------- Form table: branded labels & links ---------- */
+.crumbler-cc-wrap .form-table th {
+    color: var(--cr-ink);
+}
+
+.crumbler-cc-wrap a {
+    color: var(--cr-cookie-d);
+}
+
+.crumbler-cc-wrap a:hover {
+    color: var(--cr-ink);
+}
+
+/* ---------- Notices keep a chunky pixel edge ---------- */
+.crumbler-cc-wrap .notice {
+    border-left-width: 6px;
+    border-radius: 0;
+}

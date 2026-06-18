@@ -212,7 +212,7 @@
             '.crumbler-cd-consent-box p:last-child{margin-bottom:0}' +
             '.crumbler-cd-consent-label{font-weight:600}' +
             '.crumbler-cd-consent-actions{margin-top:12px;display:flex;gap:16px;font-size:14px}' +
-            '.crumbler-cd-consent-actions a,.crumbler-cd-consent-actions button{color:#2563eb;text-decoration:none;background:none;border:none;cursor:pointer;padding:0;font-size:inherit;font-family:inherit}' +
+            '.crumbler-cd-consent-actions a,.crumbler-cd-consent-actions button{color:#a37b61;text-decoration:none;background:none;border:none;cursor:pointer;padding:0;font-size:inherit;font-family:inherit}' +
             '.crumbler-cd-consent-actions a:hover,.crumbler-cd-consent-actions button:hover{text-decoration:underline}' +
             '.crumbler-cd-category{background:#fff;border-radius:8px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);overflow:hidden}' +
             '.crumbler-cd-category-header{padding:14px 20px;font-weight:600;font-size:16px;border-bottom:1px solid rgba(0,0,0,.06);display:flex;align-items:center;gap:10px}' +
@@ -225,7 +225,7 @@
             '.crumbler-cd-provider:last-child{border-bottom:none}' +
             '.crumbler-cd-provider-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:4px}' +
             '.crumbler-cd-provider-name{font-weight:600;font-size:15px}' +
-            '.crumbler-cd-provider-link{font-size:13px;color:#2563eb;text-decoration:none;white-space:nowrap}' +
+            '.crumbler-cd-provider-link{font-size:13px;color:#a37b61;text-decoration:none;white-space:nowrap}' +
             '.crumbler-cd-provider-link:hover{text-decoration:underline}' +
             '.crumbler-cd-provider-description{font-size:14px;opacity:.75;line-height:1.5}' +
             '.crumbler-cd-empty{text-align:center;padding:40px 20px;opacity:.5}' +
