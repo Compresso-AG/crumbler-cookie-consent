@@ -56,6 +56,43 @@ ddev wp plugin activate crumbler-cookie-consent
 
 The admin lives at `https://crumbler-wp.ddev.site/wp-admin` (admin / admin).
 
+### Coding standards
+
+PHP follows the [WordPress Coding Standards](https://github.com/WordPress/WordPress-Coding-Standards); the ruleset is in `phpcs.xml`:
+
+```bash
+phpcs    # check
+phpcbf   # auto-fix
+```
+
+The plugin passes `phpcs` with **0 errors / 0 warnings** and the official [Plugin Check](https://wordpress.org/plugins/plugin-check/) with no issues. Translations live in `languages/` (de_DE, de_CH, fr_FR, it_IT) as `.po` + compiled `.mo` (PHP) and `.json` (block editor).
+
+### Building a release
+
+`bin/build.sh` produces a clean, distributable ZIP:
+
+```bash
+bin/build.sh
+# → crumbler-cookie-consent-<version>.zip
+```
+
+It exports only committed files (`git archive HEAD`), strips everything listed in `.distignore` (dev / CI / hidden files), and places the plugin inside a top-level `crumbler-cookie-consent/` folder as WordPress requires. The version is read from the `Stable tag` in `readme.txt`, and the build aborts if any hidden file slips into the archive.
+
+### Repository layout
+
+```
+crumbler-cookie-consent.php   # main plugin file
+blocks/                       # cookie-declaration block (block.json + editor.js)
+assets/                       # admin.css, cookie-declaration.js, fonts/, logo
+languages/                    # .pot + DE/CH/FR/IT translations (.po/.mo/.json)
+readme.txt                    # WordPress.org readme
+uninstall.php                 # option cleanup on delete
+bin/build.sh                  # release builder           (not shipped)
+phpcs.xml                     # coding-standards ruleset   (not shipped)
+.wordpress-org/               # directory icon + banner    (not shipped → SVN assets/)
+.distignore                   # paths excluded from the release ZIP
+```
+
 ## Architecture
 
 - **Serviceware, not trialware.** The plugin is a thin, fully open-source client. All paid logic (subscriptions, the trial, the `is_active` lock) lives in the Crumbler backend, never in the plugin.
@@ -69,6 +106,8 @@ The admin lives at `https://crumbler-wp.ddev.site/wp-admin` (admin / admin).
 
 - Work on feature branches, open a Pull Request against `main`.
 - Keep `main` releasable at all times; tagged releases are deployed to the WordPress.org SVN repository.
+- Before tagging a release, make sure `phpcs`, the [Plugin Check](https://wordpress.org/plugins/plugin-check/) and `bin/build.sh` all pass cleanly.
+- Do not change translatable strings without regenerating the `.pot` and updating the translations.
 - Follow the [WordPress Plugin Guidelines](https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/).
 
 ## License
