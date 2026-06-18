@@ -1,0 +1,14 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.log
+.idea/
+.vscode/
+
+# Tooling / dependencies (not shipped)
+/node_modules/
+/vendor/
+/build/
+composer.lock
+package-lock.json

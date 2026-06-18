@@ -1,0 +1,22 @@
+# Files and folders that must NOT be deployed to the WordPress.org SVN repository.
+# Everything listed here is excluded from the released plugin ZIP.
+
+/.git
+/.github
+/.ddev
+/.wordpress-org
+/node_modules
+/vendor
+/tests
+/build
+
+.gitignore
+.distignore
+.editorconfig
+.gitattributes
+README.md
+phpcs.xml.dist
+composer.json
+composer.lock
+package.json
+package-lock.json
