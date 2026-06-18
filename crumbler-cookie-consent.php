@@ -7,7 +7,7 @@
  * Requires at least: 5.0
  * Requires PHP:      7.4
  * Author:            Compresso AG
- * Author URI:        https://crumbler.ch
+ * Author URI:        https://compresso.ch
  * License:           GPLv2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       crumbler-cookie-consent
