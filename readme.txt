@@ -96,6 +96,11 @@ Yes. Under Settings > Crumbler there is an option to hide the widget for logged-
 
 This plugin bundles the **Press Start 2P** font by Cody Boisclair, licensed under the SIL Open Font License 1.1. The full license is included at `assets/fonts/Press-Start-2P-OFL.txt`.
 
+== Screenshots ==
+
+1. The Crumbler settings page: enter your Site Key and see the live connection status.
+2. The "Cookie Declaration" block in the block editor.
+
 == Changelog ==
 
 = 1.0.0 =
