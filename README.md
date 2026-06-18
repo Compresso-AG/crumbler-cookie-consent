@@ -21,12 +21,49 @@ WordPress plugin that connects your website to the **[Crumbler](https://crumbler
 
 ## Local development
 
-This repository contains **only the plugin** — it maps 1:1 to `wp-content/plugins/crumbler-cookie-consent`. For local testing it is bind-mounted into a separate DDEV WordPress install that lives **outside** this repo (e.g. `~/Sites/crumbler-wp`), so no WordPress core ever lands in the public repository.
+This repository contains **only the plugin** — it maps 1:1 to `wp-content/plugins/crumbler-cookie-consent`. For local testing it is bind-mounted into a separate [DDEV](https://github.com/ddev/ddev) WordPress install that lives **outside** this repo, so no WordPress core ever lands in the public repository.
 
 ```
 ~/Sites/crumbler-cookie-consent   # this repo (the plugin)
 ~/Sites/crumbler-wp               # DDEV WordPress (de_CH), plugin mounted in
 ```
+
+### Setting up the test environment
+
+Install [DDEV](https://github.com/ddev/ddev), then:
+
+```bash
+# 1. Create a throwaway WordPress install (NOT a git repo) next to the plugin
+mkdir ~/Sites/crumbler-wp && cd ~/Sites/crumbler-wp
+ddev config --project-type=wordpress --project-name=crumbler-wp
+ddev start
+ddev wp core download --locale=de_CH
+ddev wp config create --dbname=db --dbuser=db --dbpass=db --dbhost=db
+ddev wp core install --url=https://crumbler-wp.ddev.site --title="Crumbler Test" \
+  --admin_user=admin --admin_password=admin --admin_email=test@example.com --skip-email
+ddev wp language core install de_CH --activate
+
+# 2. Bind-mount the plugin repo into the install
+cat > .ddev/docker-compose.plugin.yaml <<'YAML'
+services:
+  web:
+    volumes:
+      - "/ABSOLUTE/PATH/TO/crumbler-cookie-consent:/var/www/html/wp-content/plugins/crumbler-cookie-consent"
+YAML
+ddev restart
+ddev wp plugin activate crumbler-cookie-consent
+```
+
+The admin lives at `https://crumbler-wp.ddev.site/wp-admin` (admin / admin).
+
+## Architecture
+
+- **Serviceware, not trialware.** The plugin is a thin, fully open-source client. All paid logic (subscriptions, the trial, the `is_active` lock) lives in the Crumbler backend, never in the plugin.
+- **The widget loads from the service** (`cmp.compresso.ch`) on every page — it is the product, and must stay lean.
+- **The cookie declaration renderer** (`assets/cookie-declaration.js`) is **bundled in the plugin for v1.0** (self-contained, easiest to review). The planned **v1.1** moves it to the service as a separate, lazily-loaded script (`cmp.compresso.ch/.../cookie-declaration.js`) so it is available to non-WordPress sites too — while keeping the always-loaded widget small. It stays a separate script (not folded into the widget) precisely so it only loads on the page that embeds it.
+- **Two i18n worlds, on purpose:**
+  - *Admin/editor strings* (settings page, block editor) use WordPress gettext via `/languages/` — they follow the site locale.
+  - *Front-end cookie declaration strings* carry their own translations inside the renderer. The declaration language is per-request (`lang="fr"`) and **independent of the WordPress locale**, and the renderer must also work on non-WordPress platforms where gettext does not exist. In v1.1 these labels are expected to come from the API alongside the provider data.
 
 ## Contributing
 

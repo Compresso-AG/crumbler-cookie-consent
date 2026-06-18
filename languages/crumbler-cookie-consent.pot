@@ -1,157 +1,251 @@
-# Copyright (C) 2026 Samuel Rüegger
-# This file is distributed under the GPL v2 or later.
+# Copyright (C) 2026 Compresso AG
+# This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Compresso CMP - Cookie Consent 1.3.1\n"
-"Report-Msgid-Bugs-To: https://cmp.compresso.ch\n"
-"POT-Creation-Date: 2026-02-18 14:00+0000\n"
+"Project-Id-Version: Crumbler – Cookie Consent 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/crumbler-cookie-consent\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2026-06-18T15:43:58+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: crumbler-cookie-consent\n"
 
-#: compresso-cmp.php
+#. Plugin Name of the plugin
+#: crumbler-cookie-consent.php
+msgid "Crumbler – Cookie Consent"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: crumbler-cookie-consent.php
+msgid "https://crumbler.ch"
+msgstr ""
+
+#. Description of the plugin
+#: crumbler-cookie-consent.php
+msgid "Connects your website to the Crumbler cookie consent service: consent banner, automatic script & iframe blocking, cookie declaration and Google Consent Mode v2."
+msgstr ""
+
+#. Author of the plugin
+#: crumbler-cookie-consent.php
+msgid "Compresso AG"
+msgstr ""
+
+#. Author URI of the plugin
+#: crumbler-cookie-consent.php
+msgid "https://compresso.ch"
+msgstr ""
+
+#: crumbler-cookie-consent.php:76
+#: blocks/cookie-declaration/editor.js:33
 msgid "Settings"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:88
 msgid "General Settings"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:101
 msgid "Enable Widget"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:115
 msgid "Site Key"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:129
+#: blocks/cookie-declaration/editor.js:35
 msgid "Language"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:138
 msgid "Advanced Settings"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:151
 msgid "Widget URL"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:165
 msgid "Hide for Admins"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:181
 msgid "The Site Key must be in UUID format (e.g. af232e06-59c2-4810-b09d-7a2b25632d1b)."
 msgstr ""
 
-#: compresso-cmp.php
-msgid "Connect your website with the Compresso Cookie Management Platform."
+#: crumbler-cookie-consent.php:201
+msgid "Connect your website to the Crumbler cookie consent service."
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:205
 msgid "Optional settings for special requirements."
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:216
 msgid "Show Cookie Consent Widget on the website"
 msgstr ""
 
-#: compresso-cmp.php
+#. translators: %s: link to Crumbler Dashboard
+#: crumbler-cookie-consent.php:225
+#, php-format
 msgid "You can find the Site Key in the %s under the respective site."
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:233
 msgid "Automatic (browser language)"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:244
 msgid "When set to \"Automatic\", the widget detects the visitor's browser language."
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:250
 msgid "Only change if you run your own widget instance. Leave empty for default."
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:257
 msgid "Hide widget for logged-in administrators"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:357
+msgid "Cookie Consent"
+msgstr ""
+
+#: crumbler-cookie-consent.php:365
 msgid "Warning:"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:365
 msgid "The widget is enabled but no Site Key has been entered. The widget will not work without a Site Key."
 msgstr ""
 
-#: compresso-cmp.php
-msgid "The Cookie Consent Widget is %s and displayed on all pages."
+#. translators: 1: site name, 2: domain
+#: crumbler-cookie-consent.php:381
+#, php-format
+msgid "Connected to Crumbler: %1$s is set up and active for %2$s. The widget is being served."
 msgstr ""
 
-#: compresso-cmp.php
-msgid "active"
+#. translators: %s: domain
+#: crumbler-cookie-consent.php:388
+#, php-format
+msgid "Connected to Crumbler: this domain (%s) is set up and active. The widget is being served."
 msgstr ""
 
-#: compresso-cmp.php
+#. translators: %s: domain
+#: crumbler-cookie-consent.php:399
+#, php-format
+msgid "This domain (%s) is not authorised for the entered Site Key. Add it to the allowed domains of this site in your Crumbler dashboard. Until then the widget will not be displayed."
+msgstr ""
+
+#: crumbler-cookie-consent.php:402
+#: crumbler-cookie-consent.php:407
+#: crumbler-cookie-consent.php:412
+msgid "Re-check now"
+msgstr ""
+
+#: crumbler-cookie-consent.php:406
+msgid "The Site Key is unknown to Crumbler, or this domain is not active yet (for example the subscription or trial is not set up). The widget will not be displayed until the domain is added and active in your Crumbler dashboard."
+msgstr ""
+
+#: crumbler-cookie-consent.php:411
+msgid "The Crumbler service status could not be verified right now (service unreachable). The widget script is still embedded on all pages."
+msgstr ""
+
+#: crumbler-cookie-consent.php:421
 msgid "Save Settings"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:426
 msgid "Integration Code"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:428
 msgid "The plugin automatically adds the following code to the <head> section:"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:432
+#: crumbler-cookie-consent.php:441
+#: blocks/cookie-declaration/editor.js:13
+#: blocks/cookie-declaration/editor.js:53
 msgid "Cookie Declaration"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:434
 msgid "The cookie declaration displays all detected services and cookies, grouped by category. You can embed it in two ways:"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:436
 msgid "Gutenberg Block"
 msgstr ""
 
-#: compresso-cmp.php
+#. translators: %s: bold block name
+#: crumbler-cookie-consent.php:440
+#, php-format
 msgid "Add the %s block via the block editor. The language can optionally be overridden in the block settings."
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:445
 msgid "Shortcode"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:446
 msgid "Use the following shortcode on any page or post:"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:448
 msgid "Optionally with a language parameter:"
 msgstr ""
 
-#: compresso-cmp.php
+#: crumbler-cookie-consent.php:577
 msgid "View Cookie Declaration"
 msgstr ""
 
-#: blocks/cookie-declaration/editor.js
-msgid "Displays the Compresso CMP cookie declaration."
+#: blocks/cookie-declaration/editor.js:14
+msgid "Displays the Crumbler cookie declaration."
 msgstr ""
 
-#: blocks/cookie-declaration/editor.js
+#: blocks/cookie-declaration/editor.js:36
 msgid "Leave empty to use the plugin setting."
 msgstr ""
 
-#: blocks/cookie-declaration/editor.js
+#: blocks/cookie-declaration/editor.js:39
 msgid "Use plugin setting"
 msgstr ""
 
-#: blocks/cookie-declaration/editor.js
+#: blocks/cookie-declaration/editor.js:54
 msgid "Displays the cookie declaration with all detected services and cookies. Data is automatically loaded from the CMP API on the frontend."
+msgstr ""
+
+#: blocks/cookie-declaration/block.json
+msgctxt "block title"
+msgid "Cookie Declaration"
+msgstr ""
+
+#: blocks/cookie-declaration/block.json
+msgctxt "block description"
+msgid "Displays the Crumbler cookie declaration with all detected services and cookies."
+msgstr ""
+
+#: blocks/cookie-declaration/block.json
+msgctxt "block keyword"
+msgid "cookie"
+msgstr ""
+
+#: blocks/cookie-declaration/block.json
+msgctxt "block keyword"
+msgid "consent"
+msgstr ""
+
+#: blocks/cookie-declaration/block.json
+msgctxt "block keyword"
+msgid "gdpr"
+msgstr ""
+
+#: blocks/cookie-declaration/block.json
+msgctxt "block keyword"
+msgid "crumbler"
 msgstr ""

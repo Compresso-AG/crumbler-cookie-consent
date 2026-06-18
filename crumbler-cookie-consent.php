@@ -370,7 +370,6 @@ class Crumbler_Cookie_Consent {
                     add_query_arg(['page' => 'crumbler-cookie-consent', 'crumbler_recheck' => '1'], admin_url('options-general.php')),
                     'crumbler_cc_recheck'
                 );
-                $host_code = '<code>' . esc_html($status['host']) . '</code>';
             ?>
                 <?php if ($status['state'] === 'active'): ?>
                     <div class="notice notice-success">
@@ -380,13 +379,13 @@ class Crumbler_Cookie_Consent {
                                     /* translators: 1: site name, 2: domain */
                                     esc_html__('Connected to Crumbler: %1$s is set up and active for %2$s. The widget is being served.', 'crumbler-cookie-consent'),
                                     '<strong>' . esc_html($status['site_name']) . '</strong>',
-                                    $host_code
+                                    '<code>' . esc_html($status['host']) . '</code>'
                                 );
                             } else {
                                 printf(
                                     /* translators: %s: domain */
                                     esc_html__('Connected to Crumbler: this domain (%s) is set up and active. The widget is being served.', 'crumbler-cookie-consent'),
-                                    $host_code
+                                    '<code>' . esc_html($status['host']) . '</code>'
                                 );
                             }
                         ?></p>
@@ -397,7 +396,7 @@ class Crumbler_Cookie_Consent {
                             printf(
                                 /* translators: %s: domain */
                                 esc_html__('This domain (%s) is not authorised for the entered Site Key. Add it to the allowed domains of this site in your Crumbler dashboard. Until then the widget will not be displayed.', 'crumbler-cookie-consent'),
-                                $host_code
+                                '<code>' . esc_html($status['host']) . '</code>'
                             );
                         ?> <a href="<?php echo esc_url($recheck); ?>"><?php esc_html_e('Re-check now', 'crumbler-cookie-consent'); ?></a></p>
                     </div>

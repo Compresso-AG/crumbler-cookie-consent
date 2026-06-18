@@ -1,117 +1,107 @@
-=== Crumbler - Cookie Consent ===
-Contributors: samuelrueegger
-Tags: cookie consent, gdpr, dsgvo, cookie banner, consent management
+=== Crumbler – Cookie Consent ===
+Contributors: compresso
+Tags: cookie consent, gdpr, cookie banner, consent management, google consent mode
 Requires at least: 5.0
-Tested up to: 6.9
-Requires PHP: 8.2
-Stable tag: 1.3.1
+Tested up to: 7.0
+Requires PHP: 7.4
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Cookie consent management for your website. Powered by Crumbler.
+Connect your website to the Crumbler cookie consent service: consent banner, automatic script & iframe blocking and Google Consent Mode v2.
 
 == Description ==
 
-This plugin integrates the **Compresso Cookie Consent Widget** into your website. It provides:
+Crumbler is a hosted cookie consent service. This free, open-source plugin is the WordPress connector for it: enter your Site Key, enable the widget, done. The plugin provides:
 
-* Cookie banner with configurable design
+* Cookie consent banner with configurable design
 * Automatic script blocking before consent
 * Automatic iframe blocking (e.g. YouTube, Google Maps)
 * Cookie cleanup for non-accepted categories
 * Google Consent Mode v2 support
+* Cookie declaration (Gutenberg block and shortcode) with all detected services and cookies
 * Multi-language support (DE, FR, IT, EN)
+
+= Free plugin, paid service (no trialware) =
+
+The plugin itself is free and completely open source — none of its functionality is locked, time-limited or restricted to a paid tier. The cookie consent **service** behind it (operated by Compresso AG) requires a Crumbler account and subscription; a free trial is available. See **External services** below for exactly what data is exchanged.
 
 = How it works =
 
-1. Create an account at [cmp.compresso.ch](https://cmp.compresso.ch)
-2. Add a new site and copy the Site Key
+1. Create an account at [crumbler.ch](https://crumbler.ch)
+2. Add your domain and copy the Site Key
 3. Install and activate this plugin
 4. Enter the Site Key under Settings > Crumbler
-5. Enable the widget - done!
+5. Enable the widget — done!
 
-The widget is automatically added to the `<head>` section of every page and manages cookie consent, script blocking and Google Consent Mode fully automatically.
-
-= Features =
-
-* **Easy setup** - Just enter the Site Key and enable
-* **Cookie declaration** - Gutenberg block and shortcode to display all detected services and cookies
-* **Automatic language detection** - Or manual language selection (DE/FR/IT/EN)
-* **Admin hide** - Optionally hide the widget for logged-in administrators
-* **Custom widget URL** - For self-hosted installations
+The settings screen shows a live connection status, so you can see right away whether your domain is set up and active in Crumbler.
 
 == Installation ==
 
-1. Upload the `crumbler-cookie-consent` plugin folder to the `/wp-content/plugins/` directory
-2. Activate the plugin through the "Plugins" menu in the admin area
-3. Go to Settings > Crumbler
-4. Enter your Site Key and enable the widget
+1. Upload the `crumbler-cookie-consent` folder to `/wp-content/plugins/`, or install the plugin through the WordPress Plugins screen.
+2. Activate the plugin through the "Plugins" menu in WordPress.
+3. Go to Settings > Crumbler.
+4. Enter your Site Key and enable the widget.
+
+== External services ==
+
+This plugin connects your website to **Crumbler**, a hosted cookie consent service operated by Compresso AG. The plugin is a free, open-source client; the service requires a Crumbler account and subscription (a free trial is available). The plugin contains no locked or paid functionality.
+
+The plugin does not contact the service until you enter a Site Key and enable the widget. It communicates with the Crumbler service (cmp.compresso.ch) in three ways:
+
+1. **Consent widget script.** On every front-end page (once enabled and a Site Key is set) the plugin loads the consent widget from `https://cmp.compresso.ch/widget/cmp.min.js`. The widget renders the consent banner, blocks third-party scripts and iframes before consent, applies Google Consent Mode v2, and records the visitor's anonymised consent decision with the service. Data sent: your Site Key and the visitor's consent interaction.
+
+2. **Cookie declaration data.** When the cookie declaration block or shortcode is displayed, the visitor's browser requests the list of detected services and cookies from `https://cmp.compresso.ch/api/public/cookies`. Data sent: your Site Key and the requested language.
+
+3. **Connection status check.** On the plugin's settings screen (administrators only), the plugin requests `https://cmp.compresso.ch/api/public/config` to show whether your domain is set up and active. Data sent: your Site Key and your site's domain. The result is cached temporarily.
+
+No data is sent to any party other than the Crumbler service.
+
+* Service provider: Compresso AG
+* Terms of Service: https://crumbler.ch/agb *(TODO: confirm final URL before submission)*
+* Privacy Policy: https://crumbler.ch/datenschutz *(TODO: confirm final URL before submission)*
 
 == Frequently Asked Questions ==
 
+= Do I need a Crumbler account? =
+
+Yes. The plugin is the connector to the Crumbler service; the consent banner, blocking and cookie declaration are provided by that service. You can start with a free trial at [crumbler.ch](https://crumbler.ch).
+
 = Where do I find the Site Key? =
 
-You can find the Site Key in the [Crumbler Dashboard](https://cmp.compresso.ch) under the respective site. It is a UUID in the format `af232e06-59c2-4810-b09d-7a2b25632d1b`.
+In your Crumbler dashboard, under the respective site. It is a UUID in the format `af232e06-59c2-4810-b09d-7a2b25632d1b`.
 
 = Do I need to manually tag scripts? =
 
-No. The widget automatically detects third-party scripts based on provider patterns from the CMP database. You can also manually tag scripts:
+No. The widget automatically detects third-party scripts based on provider patterns from the Crumbler database. You can also tag scripts manually:
 
 `<script type="text/plain" data-cmp-category="analytics" data-cmp-src="https://example.com/script.js"></script>`
 
 = Does the plugin support Google Consent Mode v2? =
 
-Yes. The widget automatically sets `gtag('consent', 'default', {...})` and updates the consent status after the user's decision.
+Yes. The widget sets `gtag('consent', 'default', {...})` and updates the consent status after the user's decision.
 
 = How do I embed the cookie declaration? =
 
-There are two options:
+Two options:
 
-1. **Gutenberg block**: Add the "Cookie Declaration" block via the block editor. Optionally, the language can be overridden in the block settings.
-2. **Shortcode**: Use `[crumbler_cookies]` on any page or post. Optionally with a language parameter: `[crumbler_cookies lang="fr"]`
-
-The cookie declaration automatically displays all detected services and cookies, grouped by category (Necessary, Functional, Statistics, Marketing).
+1. **Gutenberg block**: add the "Cookie Declaration" block. The language can optionally be overridden in the block settings.
+2. **Shortcode**: use `[crumbler_cookies]` on any page or post, optionally with a language parameter: `[crumbler_cookies lang="fr"]`.
 
 = Can I hide the widget for administrators? =
 
-Yes. Under Settings > Crumbler there is an option "Hide for admins" that disables the widget for logged-in administrators.
+Yes. Under Settings > Crumbler there is an option to hide the widget for logged-in administrators.
+
+== Credits ==
+
+This plugin bundles the **Press Start 2P** font by Cody Boisclair, licensed under the SIL Open Font License 1.1. The full license is included at `assets/fonts/Press-Start-2P-OFL.txt`.
 
 == Changelog ==
 
-= 1.3.1 =
-* Fix: Text Domain corrected (removed restricted term)
-* Fix: Widget script loaded via wp_enqueue_script() instead of inline output
-* Readme translated to English as required by Plugin Directory
-* Tested up to WordPress 6.9
-
-= 1.3.0 =
-* Preparation for Plugin Directory
-* License header and Text Domain added
-* Security: All output escaped with esc_attr/esc_html
-* index.php files in all directories
-
-= 1.2.2 =
-* Fix: Preserve native fetch against override by third-party scripts
-* Fix: Cookie declaration works on pages with custom fetch function
-
-= 1.2.1 =
-* Fix: Consent status correctly shows "All accepted"/"All rejected"
-
-= 1.2.0 =
-* Introductory text with cookie declaration and legal basis
-* Consent status box with domain, status, date and consent ID
-* Buttons to change and revoke consent directly in the cookie declaration
-* Complete translations for DE, FR, IT and EN
-
-= 1.1.0 =
-* Gutenberg block "Cookie Declaration" to display all detected services and cookies
-* Shortcode [crumbler_cookies] as fallback for the Classic Editor
-* Optional language parameter for block and shortcode
-* Data is automatically loaded from the CMP API and grouped by category
-
 = 1.0.0 =
-* Initial release
-* Settings page with Site Key, language and advanced options
-* Automatic script integration in the frontend
-* UUID validation for Site Key
-* Admin hide option
-* Custom widget URL for self-hosted installations
+* Initial public release.
+* Settings page with Site Key, language and advanced options.
+* Live connection status check against the Crumbler service.
+* Automatic widget integration on the front end.
+* Cookie declaration as Gutenberg block (block.json) and shortcode.
+* Multi-language support (DE, FR, IT, EN).
