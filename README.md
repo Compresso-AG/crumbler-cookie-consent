@@ -25,6 +25,10 @@ WordPress plugin that connects your website to the **[Crumbler](https://crumbler
 
 ![Cookie Declaration block](.wordpress-org/screenshot-2.png)
 
+**Cookie declaration** on the front end — consent status and detected services.
+
+![Cookie declaration on the front end](.wordpress-org/screenshot-3.png)
+
 ## Requirements
 
 - WordPress 5.0+ (tested up to 7.0)

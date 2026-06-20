@@ -38,218 +38,81 @@ msgstr ""
 msgid "https://compresso.ch"
 msgstr ""
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:92
 #: crumbler-cookie-consent.php:92
 #: blocks/cookie-declaration/editor.js:33
-#: build/crumbler-cookie-consent/blocks/cookie-declaration/editor.js:33
 msgid "Settings"
 msgstr "Réglages"
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:104
 #: crumbler-cookie-consent.php:104
 msgid "General Settings"
 msgstr "Réglages généraux"
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:121
 #: crumbler-cookie-consent.php:121
 msgid "Enable Widget"
 msgstr "Activer le widget"
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:139
 #: crumbler-cookie-consent.php:139
 msgid "Site Key"
 msgstr ""
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:157
 #: crumbler-cookie-consent.php:157
 #: blocks/cookie-declaration/editor.js:35
-#: build/crumbler-cookie-consent/blocks/cookie-declaration/editor.js:35
 msgid "Language"
 msgstr "Langue"
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:166
 #: crumbler-cookie-consent.php:166
 msgid "Advanced Settings"
 msgstr "Réglages avancés"
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:183
 #: crumbler-cookie-consent.php:183
 msgid "Widget URL"
 msgstr "URL du widget"
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:201
 #: crumbler-cookie-consent.php:201
 msgid "Hide for Admins"
 msgstr "Masquer pour les administrateurs"
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:220
+#: crumbler-cookie-consent.php:219
+msgid "Powered-by Link"
+msgstr "Lien « Powered by »"
+
 #: crumbler-cookie-consent.php:238
 msgid "The Site Key must be in UUID format (e.g. af232e06-59c2-4810-b09d-7a2b25632d1b)."
 msgstr "Le Site Key doit être au format UUID (par ex. af232e06-59c2-4810-b09d-7a2b25632d1b)."
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:246
 #: crumbler-cookie-consent.php:264
 msgid "Connect your website to the Crumbler cookie consent service."
 msgstr "Connectez votre site web au service de consentement aux cookies Crumbler."
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:253
 #: crumbler-cookie-consent.php:271
 msgid "Optional settings for special requirements."
 msgstr "Réglages facultatifs pour des besoins particuliers."
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:267
 #: crumbler-cookie-consent.php:285
 msgid "Show Cookie Consent Widget on the website"
 msgstr "Afficher le widget de consentement aux cookies sur le site web"
 
 #. translators: %s: link to Crumbler Dashboard
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:279
 #: crumbler-cookie-consent.php:297
 #, php-format
 msgid "You can find the Site Key in the %s under the respective site."
 msgstr "Vous trouverez le Site Key dans le %s, sous le site correspondant."
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:290
 #: crumbler-cookie-consent.php:308
 msgid "Automatic (browser language)"
 msgstr "Automatique (langue du navigateur)"
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:301
 #: crumbler-cookie-consent.php:319
 msgid "When set to \"Automatic\", the widget detects the visitor's browser language."
 msgstr "En mode « Automatique », le widget détecte la langue du navigateur du visiteur."
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:310
 #: crumbler-cookie-consent.php:328
 msgid "Only change if you run your own widget instance. Leave empty for default."
 msgstr "À modifier uniquement si vous exploitez votre propre instance du widget. Laisser vide pour la valeur par défaut."
 
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:320
 #: crumbler-cookie-consent.php:338
 msgid "Hide widget for logged-in administrators"
 msgstr "Masquer le widget pour les administrateurs connectés"
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:441
-#: crumbler-cookie-consent.php:471
-msgid "Cookie Consent"
-msgstr ""
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:449
-#: crumbler-cookie-consent.php:479
-msgid "Warning:"
-msgstr "Avertissement :"
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:449
-#: crumbler-cookie-consent.php:479
-msgid "The widget is enabled but no Site Key has been entered. The widget will not work without a Site Key."
-msgstr "Le widget est activé mais aucun Site Key n'a été saisi. Le widget ne fonctionne pas sans Site Key."
-
-#. translators: 1: site name, 2: domain
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:472
-#: crumbler-cookie-consent.php:502
-#, php-format
-msgid "Connected to Crumbler: %1$s is set up and active for %2$s. The widget is being served."
-msgstr "Connecté à Crumbler : %1$s est configuré et actif pour %2$s. Le widget est diffusé."
-
-#. translators: %s: domain
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:479
-#: crumbler-cookie-consent.php:509
-#, php-format
-msgid "Connected to Crumbler: this domain (%s) is set up and active. The widget is being served."
-msgstr "Connecté à Crumbler : ce domaine (%s) est configuré et actif. Le widget est diffusé."
-
-#. translators: %s: domain
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:492
-#: crumbler-cookie-consent.php:522
-#, php-format
-msgid "This domain (%s) is not authorised for the entered Site Key. Add it to the allowed domains of this site in your Crumbler dashboard. Until then the widget will not be displayed."
-msgstr "Ce domaine (%s) n'est pas autorisé pour le Site Key saisi. Ajoutez-le aux domaines autorisés de ce site dans votre tableau de bord Crumbler. Jusque-là, le widget ne sera pas affiché."
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:496
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:501
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:506
-#: crumbler-cookie-consent.php:526
-#: crumbler-cookie-consent.php:531
-#: crumbler-cookie-consent.php:536
-msgid "Re-check now"
-msgstr "Vérifier à nouveau"
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:500
-#: crumbler-cookie-consent.php:530
-msgid "The Site Key is unknown to Crumbler, or this domain is not active yet (for example the subscription or trial is not set up). The widget will not be displayed until the domain is added and active in your Crumbler dashboard."
-msgstr "Le Site Key est inconnu de Crumbler, ou ce domaine n'est pas encore actif (par exemple, l'abonnement ou la période d'essai n'est pas configuré). Le widget ne sera affiché qu'une fois le domaine ajouté et actif dans votre tableau de bord Crumbler."
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:505
-#: crumbler-cookie-consent.php:535
-msgid "The Crumbler service status could not be verified right now (service unreachable). The widget script is still embedded on all pages."
-msgstr "Le statut du service Crumbler n'a pas pu être vérifié pour le moment (service injoignable). Le script du widget reste intégré sur toutes les pages."
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:515
-#: crumbler-cookie-consent.php:545
-msgid "Save Settings"
-msgstr "Enregistrer les réglages"
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:520
-#: crumbler-cookie-consent.php:550
-msgid "Integration Code"
-msgstr "Code d'intégration"
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:522
-#: crumbler-cookie-consent.php:552
-msgid "The plugin automatically adds the following code to the <head> section:"
-msgstr "L'extension ajoute automatiquement le code suivant dans la section <head> :"
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:526
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:536
-#: crumbler-cookie-consent.php:556
-#: crumbler-cookie-consent.php:566
-#: blocks/cookie-declaration/editor.js:13
-#: blocks/cookie-declaration/editor.js:53
-#: build/crumbler-cookie-consent/blocks/cookie-declaration/editor.js:13
-#: build/crumbler-cookie-consent/blocks/cookie-declaration/editor.js:53
-msgid "Cookie Declaration"
-msgstr "Déclaration de cookies"
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:528
-#: crumbler-cookie-consent.php:558
-msgid "The cookie declaration displays all detected services and cookies, grouped by category. You can embed it in two ways:"
-msgstr "La déclaration de cookies affiche tous les services et cookies détectés, regroupés par catégorie. Vous pouvez l'intégrer de deux manières :"
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:530
-#: crumbler-cookie-consent.php:560
-msgid "Gutenberg Block"
-msgstr "Bloc Gutenberg"
-
-#. translators: %s: bold block name
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:535
-#: crumbler-cookie-consent.php:565
-#, php-format
-msgid "Add the %s block via the block editor. The language can optionally be overridden in the block settings."
-msgstr "Ajoutez le bloc %s via l'éditeur de blocs. La langue peut éventuellement être remplacée dans les réglages du bloc."
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:541
-#: crumbler-cookie-consent.php:571
-msgid "Shortcode"
-msgstr ""
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:542
-#: crumbler-cookie-consent.php:572
-msgid "Use the following shortcode on any page or post:"
-msgstr "Utilisez le shortcode suivant sur n'importe quelle page ou article :"
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:544
-#: crumbler-cookie-consent.php:574
-msgid "Optionally with a language parameter:"
-msgstr "Éventuellement avec un paramètre de langue :"
-
-#: build/crumbler-cookie-consent/crumbler-cookie-consent.php:681
-#: crumbler-cookie-consent.php:714
-msgid "View Cookie Declaration"
-msgstr "Voir la déclaration de cookies"
-
-#: crumbler-cookie-consent.php:219
-msgid "Powered-by Link"
-msgstr "Lien « Powered by »"
 
 #: crumbler-cookie-consent.php:349
 msgid "Show a \"Powered by Crumbler\" link in the cookie declaration"
@@ -259,58 +122,141 @@ msgstr "Afficher un lien « Powered by Crumbler » dans la déclaration de cooki
 msgid "Off by default. When enabled, a small credit linking to crumbler.ch is shown below the cookie declaration."
 msgstr "Désactivé par défaut. Une fois activé, un petit crédit renvoyant vers crumbler.ch s'affiche sous la déclaration de cookies."
 
+#: crumbler-cookie-consent.php:471
+msgid "Cookie Consent"
+msgstr ""
+
+#: crumbler-cookie-consent.php:479
+msgid "Warning:"
+msgstr "Avertissement :"
+
+#: crumbler-cookie-consent.php:479
+msgid "The widget is enabled but no Site Key has been entered. The widget will not work without a Site Key."
+msgstr "Le widget est activé mais aucun Site Key n'a été saisi. Le widget ne fonctionne pas sans Site Key."
+
+#. translators: 1: site name, 2: domain
+#: crumbler-cookie-consent.php:502
+#, php-format
+msgid "Connected to Crumbler: %1$s is set up and active for %2$s. The widget is being served."
+msgstr "Connecté à Crumbler : %1$s est configuré et actif pour %2$s. Le widget est diffusé."
+
+#. translators: %s: domain
+#: crumbler-cookie-consent.php:509
+#, php-format
+msgid "Connected to Crumbler: this domain (%s) is set up and active. The widget is being served."
+msgstr "Connecté à Crumbler : ce domaine (%s) est configuré et actif. Le widget est diffusé."
+
+#. translators: %s: domain
+#: crumbler-cookie-consent.php:522
+#, php-format
+msgid "This domain (%s) is not authorised for the entered Site Key. Add it to the allowed domains of this site in your Crumbler dashboard. Until then the widget will not be displayed."
+msgstr "Ce domaine (%s) n'est pas autorisé pour le Site Key saisi. Ajoutez-le aux domaines autorisés de ce site dans votre tableau de bord Crumbler. Jusque-là, le widget ne sera pas affiché."
+
+#: crumbler-cookie-consent.php:526
+#: crumbler-cookie-consent.php:531
+#: crumbler-cookie-consent.php:536
+msgid "Re-check now"
+msgstr "Vérifier à nouveau"
+
+#: crumbler-cookie-consent.php:530
+msgid "The Site Key is unknown to Crumbler, or this domain is not active yet (for example the subscription or trial is not set up). The widget will not be displayed until the domain is added and active in your Crumbler dashboard."
+msgstr "Le Site Key est inconnu de Crumbler, ou ce domaine n'est pas encore actif (par exemple, l'abonnement ou la période d'essai n'est pas configuré). Le widget ne sera affiché qu'une fois le domaine ajouté et actif dans votre tableau de bord Crumbler."
+
+#: crumbler-cookie-consent.php:535
+msgid "The Crumbler service status could not be verified right now (service unreachable). The widget script is still embedded on all pages."
+msgstr "Le statut du service Crumbler n'a pas pu être vérifié pour le moment (service injoignable). Le script du widget reste intégré sur toutes les pages."
+
+#: crumbler-cookie-consent.php:545
+msgid "Save Settings"
+msgstr "Enregistrer les réglages"
+
+#: crumbler-cookie-consent.php:550
+msgid "Integration Code"
+msgstr "Code d'intégration"
+
+#: crumbler-cookie-consent.php:552
+msgid "The plugin automatically adds the following code to the <head> section:"
+msgstr "L'extension ajoute automatiquement le code suivant dans la section <head> :"
+
+#: crumbler-cookie-consent.php:556
+#: crumbler-cookie-consent.php:566
+#: blocks/cookie-declaration/editor.js:13
+#: blocks/cookie-declaration/editor.js:53
+msgid "Cookie Declaration"
+msgstr "Déclaration de cookies"
+
+#: crumbler-cookie-consent.php:558
+msgid "The cookie declaration displays all detected services and cookies, grouped by category. You can embed it in two ways:"
+msgstr "La déclaration de cookies affiche tous les services et cookies détectés, regroupés par catégorie. Vous pouvez l'intégrer de deux manières :"
+
+#: crumbler-cookie-consent.php:560
+msgid "Gutenberg Block"
+msgstr "Bloc Gutenberg"
+
+#. translators: %s: bold block name
+#: crumbler-cookie-consent.php:565
+#, php-format
+msgid "Add the %s block via the block editor. The language can optionally be overridden in the block settings."
+msgstr "Ajoutez le bloc %s via l'éditeur de blocs. La langue peut éventuellement être remplacée dans les réglages du bloc."
+
+#: crumbler-cookie-consent.php:571
+msgid "Shortcode"
+msgstr ""
+
+#: crumbler-cookie-consent.php:572
+msgid "Use the following shortcode on any page or post:"
+msgstr "Utilisez le shortcode suivant sur n'importe quelle page ou article :"
+
+#: crumbler-cookie-consent.php:574
+msgid "Optionally with a language parameter:"
+msgstr "Éventuellement avec un paramètre de langue :"
+
+#: crumbler-cookie-consent.php:714
+msgid "View Cookie Declaration"
+msgstr "Voir la déclaration de cookies"
+
 #: blocks/cookie-declaration/editor.js:14
-#: build/crumbler-cookie-consent/blocks/cookie-declaration/editor.js:14
 msgid "Displays the Crumbler cookie declaration."
 msgstr "Affiche la déclaration de cookies Crumbler."
 
 #: blocks/cookie-declaration/editor.js:36
-#: build/crumbler-cookie-consent/blocks/cookie-declaration/editor.js:36
 msgid "Leave empty to use the plugin setting."
 msgstr "Laisser vide pour utiliser le réglage de l'extension."
 
 #: blocks/cookie-declaration/editor.js:39
-#: build/crumbler-cookie-consent/blocks/cookie-declaration/editor.js:39
 msgid "Use plugin setting"
 msgstr "Utiliser le réglage de l'extension"
 
 #: blocks/cookie-declaration/editor.js:54
-#: build/crumbler-cookie-consent/blocks/cookie-declaration/editor.js:54
 msgid "Displays the cookie declaration with all detected services and cookies. Data is automatically loaded from the Crumbler API on the frontend."
 msgstr "Affiche la déclaration de cookies avec tous les services et cookies détectés. Les données sont automatiquement chargées depuis l'API Crumbler côté visiteur."
 
 #: blocks/cookie-declaration/block.json
-#: build/crumbler-cookie-consent/blocks/cookie-declaration/block.json
 msgctxt "block title"
 msgid "Cookie Declaration"
 msgstr "Déclaration de cookies"
 
 #: blocks/cookie-declaration/block.json
-#: build/crumbler-cookie-consent/blocks/cookie-declaration/block.json
 msgctxt "block description"
 msgid "Displays the Crumbler cookie declaration with all detected services and cookies."
 msgstr "Affiche la déclaration de cookies Crumbler avec tous les services et cookies détectés."
 
 #: blocks/cookie-declaration/block.json
-#: build/crumbler-cookie-consent/blocks/cookie-declaration/block.json
 msgctxt "block keyword"
 msgid "cookie"
 msgstr ""
 
 #: blocks/cookie-declaration/block.json
-#: build/crumbler-cookie-consent/blocks/cookie-declaration/block.json
 msgctxt "block keyword"
 msgid "consent"
 msgstr ""
 
 #: blocks/cookie-declaration/block.json
-#: build/crumbler-cookie-consent/blocks/cookie-declaration/block.json
 msgctxt "block keyword"
 msgid "gdpr"
 msgstr ""
 
 #: blocks/cookie-declaration/block.json
-#: build/crumbler-cookie-consent/blocks/cookie-declaration/block.json
 msgctxt "block keyword"
 msgid "crumbler"
 msgstr ""

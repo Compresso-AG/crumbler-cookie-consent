@@ -100,6 +100,7 @@ This plugin bundles the **Press Start 2P** font by Cody Boisclair, licensed unde
 
 1. The Crumbler settings page: enter your Site Key and see the live connection status.
 2. The "Cookie Declaration" block in the block editor.
+3. The cookie declaration on the front end: intro text, the visitor's consent status and the detected services grouped by category.
 
 == Changelog ==
 
