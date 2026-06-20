@@ -203,6 +203,24 @@ class Crumbler_Cookie_Consent {
 			'crumbler-cookie-consent',
 			'crumbler_cc_advanced'
 		);
+
+		// Field: Show the "Powered by Crumbler" credit (opt-in, off by default).
+		register_setting(
+			'crumbler-cookie-consent',
+			self::OPTION_PREFIX . 'show_powered_by',
+			array(
+				'type'              => 'boolean',
+				'default'           => false,
+				'sanitize_callback' => 'rest_sanitize_boolean',
+			)
+		);
+		add_settings_field(
+			self::OPTION_PREFIX . 'show_powered_by',
+			__( 'Powered-by Link', 'crumbler-cookie-consent' ),
+			array( $this, 'render_field_show_powered_by' ),
+			'crumbler-cookie-consent',
+			'crumbler_cc_advanced'
+		);
 	}
 
 	/**
@@ -319,6 +337,18 @@ class Crumbler_Cookie_Consent {
 		echo '<input type="checkbox" name="' . esc_attr( self::OPTION_PREFIX . 'hide_for_admins' ) . '" value="1" ' . checked( 1, $value, false ) . '>';
 		echo ' ' . esc_html__( 'Hide widget for logged-in administrators', 'crumbler-cookie-consent' );
 		echo '</label>';
+	}
+
+	/**
+	 * Render the "Powered-by Link" checkbox field.
+	 */
+	public function render_field_show_powered_by() {
+		$value = get_option( self::OPTION_PREFIX . 'show_powered_by', false );
+		echo '<label>';
+		echo '<input type="checkbox" name="' . esc_attr( self::OPTION_PREFIX . 'show_powered_by' ) . '" value="1" ' . checked( 1, $value, false ) . '>';
+		echo ' ' . esc_html__( 'Show a "Powered by Crumbler" link in the cookie declaration', 'crumbler-cookie-consent' );
+		echo '</label>';
+		echo '<p class="description">' . esc_html__( 'Off by default. When enabled, a small credit linking to crumbler.ch is shown below the cookie declaration.', 'crumbler-cookie-consent' ) . '</p>';
 	}
 
 	// =========================================================================
@@ -674,9 +704,12 @@ class Crumbler_Cookie_Consent {
 
 		$declaration_url = $this->get_api_base_url() . '/cookies?key=' . rawurlencode( $site_key ) . '&lang=' . rawurlencode( $lang );
 
+		$show_powered_by = get_option( self::OPTION_PREFIX . 'show_powered_by', false ) ? '1' : '0';
+
 		$output  = '<div class="crumbler-cookies"';
 		$output .= ' data-site-key="' . esc_attr( $site_key ) . '"';
 		$output .= ' data-lang="' . esc_attr( $lang ) . '"';
+		$output .= ' data-powered-by="' . esc_attr( $show_powered_by ) . '"';
 		$output .= ' data-api-url="' . esc_attr( $api_url ) . '">';
 		$output .= '<noscript><a href="' . esc_url( $declaration_url ) . '">' . esc_html__( 'View Cookie Declaration', 'crumbler-cookie-consent' ) . '</a></noscript>';
 		$output .= '</div>';

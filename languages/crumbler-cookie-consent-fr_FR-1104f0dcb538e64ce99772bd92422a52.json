@@ -1,35 +1,35 @@
 {
     "translation-revision-date": "2026-06-20T17:29:40+02:00",
     "generator": "WP-CLI\/2.12.0",
-    "source": "blocks\/cookie-declaration\/editor.js",
-    "domain": "crumbler-cookie-consent",
+    "source": "build\/crumbler-cookie-consent\/blocks\/cookie-declaration\/editor.js",
+    "domain": "messages",
     "locale_data": {
-        "crumbler-cookie-consent": {
+        "messages": {
             "": {
-                "domain": "crumbler-cookie-consent",
-                "lang": "de_CH",
+                "domain": "messages",
+                "lang": "fr_FR",
                 "plural-forms": "nplurals=2; plural=(n != 1);"
             },
             "Settings": [
-                "Einstellungen"
+                "R\u00e9glages"
             ],
             "Language": [
-                "Sprache"
+                "Langue"
             ],
             "Cookie Declaration": [
-                "Cookie-Erkl\u00e4rung"
+                "D\u00e9claration de cookies"
             ],
             "Displays the Crumbler cookie declaration.": [
-                "Zeigt die Crumbler-Cookie-Erkl\u00e4rung an."
+                "Affiche la d\u00e9claration de cookies Crumbler."
             ],
             "Leave empty to use the plugin setting.": [
-                "Leer lassen, um die Plugin-Einstellung zu verwenden."
+                "Laisser vide pour utiliser le r\u00e9glage de l'extension."
             ],
             "Use plugin setting": [
-                "Plugin-Einstellung verwenden"
+                "Utiliser le r\u00e9glage de l'extension"
             ],
             "Displays the cookie declaration with all detected services and cookies. Data is automatically loaded from the Crumbler API on the frontend.": [
-                "Zeigt die Cookie-Erkl\u00e4rung mit allen erkannten Diensten und Cookies an. Die Daten werden im Frontend automatisch von der Crumbler-API geladen."
+                "Affiche la d\u00e9claration de cookies avec tous les services et cookies d\u00e9tect\u00e9s. Les donn\u00e9es sont automatiquement charg\u00e9es depuis l'API Crumbler c\u00f4t\u00e9 visiteur."
             ]
         }
     }

@@ -241,6 +241,7 @@
         var siteKey = container.getAttribute('data-site-key');
         var lang = container.getAttribute('data-lang') || 'de';
         var apiUrl = container.getAttribute('data-api-url');
+        var showPoweredBy = container.getAttribute('data-powered-by') === '1';
         var strings = t(lang);
 
         if (!siteKey || !apiUrl) {
@@ -258,7 +259,7 @@
                 return response.json();
             })
             .then(function(data) {
-                container.innerHTML = buildHTML(data, strings, lang);
+                container.innerHTML = buildHTML(data, strings, lang, showPoweredBy);
                 bindConsentActions(container);
             })
             .catch(function() {
@@ -289,7 +290,7 @@
         }
     }
 
-    function buildHTML(data, strings, lang) {
+    function buildHTML(data, strings, lang, showPoweredBy) {
         var html = '';
         var siteName = data.site_name || '';
         var categories = data.categories || {};
@@ -374,7 +375,9 @@
             html += '<div class="crumbler-cd-empty"><p>' + escapeHtml(strings.empty) + '</p></div>';
         }
 
-        html += '<div class="crumbler-cd-footer">' + escapeHtml(strings.powered) + ' <a href="https://crumbler.ch" target="_blank" rel="noopener">Crumbler</a></div>';
+        if (showPoweredBy) {
+            html += '<div class="crumbler-cd-footer">' + escapeHtml(strings.powered) + ' <a href="https://crumbler.ch" target="_blank" rel="noopener">Crumbler</a></div>';
+        }
 
         return html;
     }

@@ -1,13 +1,13 @@
 {
     "translation-revision-date": "2026-06-20T17:29:40+02:00",
     "generator": "WP-CLI\/2.12.0",
-    "source": "blocks\/cookie-declaration\/editor.js",
-    "domain": "crumbler-cookie-consent",
+    "source": "build\/crumbler-cookie-consent\/blocks\/cookie-declaration\/editor.js",
+    "domain": "messages",
     "locale_data": {
-        "crumbler-cookie-consent": {
+        "messages": {
             "": {
-                "domain": "crumbler-cookie-consent",
-                "lang": "de_CH",
+                "domain": "messages",
+                "lang": "de_DE",
                 "plural-forms": "nplurals=2; plural=(n != 1);"
             },
             "Settings": [
