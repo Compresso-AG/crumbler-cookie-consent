@@ -19,6 +19,7 @@ $crumbler_cc_options = array(
 	'crumbler_cc_language',
 	'crumbler_cc_widget_url',
 	'crumbler_cc_hide_for_admins',
+	'crumbler_cc_show_powered_by',
 );
 
 foreach ( $crumbler_cc_options as $crumbler_cc_option ) {
