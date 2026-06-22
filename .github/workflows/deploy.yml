@@ -1,0 +1,24 @@
+name: Deploy to WordPress.org
+
+# Pushing a version tag (e.g. 1.0.0) deploys trunk, the matching tag and the
+# .wordpress-org/ assets to the WordPress.org SVN repository.
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  deploy:
+    name: Deploy to WordPress.org
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: WordPress Plugin Deploy
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: crumbler-cookie-consent
+          ASSETS_DIR: .wordpress-org
