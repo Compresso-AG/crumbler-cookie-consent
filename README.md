@@ -6,6 +6,8 @@ WordPress plugin that connects your website to the **[Crumbler](https://crumbler
 
 > **Serviceware, not trialware.** Crumbler is a hosted service (SaaS) operated by Compresso AG. A Crumbler account and a site key are required for the widget to work. The **plugin itself is free and fully open source** (GPL-2.0-or-later); the paid functionality lives entirely in the service.
 
+**On WordPress.org:** <https://wordpress.org/plugins/crumbler-cookie-consent/>
+
 ## Features
 
 - Cookie consent banner with configurable design (served by the Crumbler widget)
@@ -94,6 +96,20 @@ bin/build.sh
 
 It exports only committed files (`git archive HEAD`), strips everything listed in `.distignore` (dev / CI / hidden files), and places the plugin inside a top-level `crumbler-cookie-consent/` folder as WordPress requires. The version is read from the `Stable tag` in `readme.txt`, and the build aborts if any hidden file slips into the archive.
 
+### Releasing to WordPress.org
+
+Releases are deployed automatically via `.github/workflows/deploy.yml`:
+
+1. Bump the version in the plugin header (`Version:`) **and** the `Stable tag` in `readme.txt` (they must match), and update the changelog.
+2. Commit to `main`.
+3. Tag the version and push the tag:
+
+   ```bash
+   git tag -a 1.0.1 -m "1.0.1" && git push origin 1.0.1
+   ```
+
+Pushing a `X.Y.Z` tag runs [10up/action-wordpress-plugin-deploy](https://github.com/10up/action-wordpress-plugin-deploy), which publishes `trunk`, `tags/<version>` and the `.wordpress-org/` assets to the WordPress.org SVN repository (using the `SVN_USERNAME` / `SVN_PASSWORD` repository secrets).
+
 ### Repository layout
 
 ```
@@ -105,6 +121,7 @@ readme.txt                    # WordPress.org readme
 uninstall.php                 # option cleanup on delete
 bin/build.sh                  # release builder           (not shipped)
 phpcs.xml                     # coding-standards ruleset   (not shipped)
+.github/workflows/deploy.yml  # WordPress.org SVN deploy   (not shipped)
 .wordpress-org/               # directory icon + banner    (not shipped → SVN assets/)
 .distignore                   # paths excluded from the release ZIP
 ```
