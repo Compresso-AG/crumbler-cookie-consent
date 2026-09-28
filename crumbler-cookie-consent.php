@@ -3,8 +3,8 @@
  * Plugin Name:       Crumbler – Cookie Consent
  * Plugin URI:        https://crumbler.ch
  * Description:       Connects your website to the Crumbler cookie consent service: consent banner, automatic script & iframe blocking, cookie declaration and Google Consent Mode v2.
- * Version:           1.0.0
- * Requires at least: 5.0
+ * Version:           1.1.0
+ * Requires at least: 5.7
  * Requires PHP:      7.4
  * Author:            Compresso AG
  * Author URI:        https://compresso.ch
@@ -31,7 +31,7 @@ class Crumbler_Cookie_Consent {
 	const OPTION_PREFIX = 'crumbler_cc_';
 	const SERVICE_URL   = 'https://cmp.compresso.ch';
 	const WIDGET_URL    = 'https://cmp.compresso.ch/widget/cmp.min.js';
-	const VERSION       = '1.0.0';
+	const VERSION       = '1.1.0';
 
 	/**
 	 * Hook suffix of the settings page (used to scope admin assets).
@@ -47,7 +47,18 @@ class Crumbler_Cookie_Consent {
 		add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_widget_script' ), 1 );
+		/**
+		 * Filters the wp_head priority at which the widget script is printed.
+		 *
+		 * The widget can only block scripts that come after it, so it is printed
+		 * before everything else in <head> by default.
+		 *
+		 * @since 1.1.0
+		 *
+		 * @param int $priority Hook priority. Default PHP_INT_MIN.
+		 */
+		$widget_priority = (int) apply_filters( 'crumbler_cc_widget_priority', PHP_INT_MIN );
+		add_action( 'wp_head', array( $this, 'print_widget_script' ), $widget_priority );
 		add_action( 'init', array( $this, 'register_block_and_shortcode' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'add_settings_link' ) );
 	}
@@ -584,32 +595,67 @@ class Crumbler_Cookie_Consent {
 	// =========================================================================
 
 	/**
-	 * Enqueue the widget script in wp_head.
+	 * Print the widget script as the very first element of wp_head.
+	 *
+	 * The widget blocks third-party scripts before consent and sets the Google
+	 * Consent Mode defaults, which only works for scripts that come after it.
+	 * wp_enqueue_script() would print it with the other head scripts (wp_head
+	 * priority 9), i.e. after anything themes and plugins (Site Kit, GTM,
+	 * Matomo, ...) output earlier. It is therefore printed directly, loaded
+	 * synchronously and excluded from JS optimisation (defer/delay/combine) of
+	 * common caching plugins and Cloudflare Rocket Loader.
 	 */
-	public function enqueue_widget_script() {
-		// Check if enabled.
-		if ( ! get_option( self::OPTION_PREFIX . 'enabled', false ) ) {
+	public function print_widget_script() {
+		if ( ! $this->should_load_widget() ) {
 			return;
 		}
 
-		// Check site key.
-		$site_key = get_option( self::OPTION_PREFIX . 'site_key', '' );
-		if ( empty( $site_key ) ) {
-			return;
+		wp_print_script_tag(
+			array(
+				'id'                      => 'crumbler-cookie-consent-widget-js',
+				'src'                     => $this->get_widget_url(),
+				// Cloudflare Rocket Loader.
+				'data-cfasync'            => 'false',
+				// WP Rocket (all JS optimisations incl. "Delay JavaScript execution").
+				'nowprocket'              => true,
+				'data-no-minify'          => '1',
+				// LiteSpeed Cache.
+				'data-no-optimize'        => '1',
+				'data-no-defer'           => '1',
+				// Autoptimize.
+				'data-noptimize'          => '1',
+				// Jetpack Boost.
+				'data-jetpack-boost'      => 'ignore',
+				// mod_pagespeed.
+				'data-pagespeed-no-defer' => true,
+			)
+		);
+	}
+
+	/**
+	 * Whether the widget should be loaded on the current front-end request.
+	 *
+	 * @return bool
+	 */
+	private function should_load_widget() {
+		if ( is_admin() ) {
+			return false;
+		}
+
+		if ( ! get_option( self::OPTION_PREFIX . 'enabled', false ) ) {
+			return false;
+		}
+
+		if ( '' === (string) get_option( self::OPTION_PREFIX . 'site_key', '' ) ) {
+			return false;
 		}
 
 		// Hide for admins if configured.
 		if ( get_option( self::OPTION_PREFIX . 'hide_for_admins', false ) && current_user_can( 'manage_options' ) ) {
-			return;
+			return false;
 		}
 
-		// Don't load in admin area.
-		if ( is_admin() ) {
-			return;
-		}
-
-		$url = $this->get_widget_url();
-		wp_enqueue_script( 'crumbler-cookie-consent-widget', $url, array(), '1.0.0', false );
+		return true;
 	}
 
 	/**

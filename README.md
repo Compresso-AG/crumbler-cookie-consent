@@ -33,7 +33,7 @@ WordPress plugin that connects your website to the **[Crumbler](https://crumbler
 
 ## Requirements
 
-- WordPress 5.0+ (tested up to 7.0)
+- WordPress 5.7+ (tested up to 7.1)
 - PHP 7.4+
 - A Crumbler account → [crumbler.ch](https://crumbler.ch)
 
