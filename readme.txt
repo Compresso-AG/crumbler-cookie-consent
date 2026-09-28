@@ -1,10 +1,10 @@
 === Crumbler – Cookie Consent ===
 Contributors: compresso
 Tags: cookie consent, gdpr, cookie banner, consent management, google consent mode
-Requires at least: 5.0
-Tested up to: 7.0
+Requires at least: 5.7
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,6 +88,14 @@ Two options:
 1. **Gutenberg block**: add the "Cookie Declaration" block. The language can optionally be overridden in the block settings.
 2. **Shortcode**: use `[crumbler_cookies]` on any page or post, optionally with a language parameter: `[crumbler_cookies lang="fr"]`.
 
+= Where is the widget loaded? =
+
+As the very first element in `<head>`, before the scripts of other plugins and the theme. The widget can only block scripts that come after it. If your theme hard-codes a tracking snippet in `header.php` above `wp_head()`, move it below or let a plugin add it instead. The `wp_head` priority can be changed with the `crumbler_cc_widget_priority` filter.
+
+= Does it work with caching and optimisation plugins? =
+
+Yes. The widget script is marked so that WP Rocket, LiteSpeed Cache, Autoptimize, Jetpack Boost and Cloudflare Rocket Loader do not defer, delay or combine it. If you use another optimisation plugin, exclude `cmp.compresso.ch/widget/cmp.min.js` from "defer" and "delay JavaScript" there.
+
 = Can I hide the widget for administrators? =
 
 Yes. Under Settings > Crumbler there is an option to hide the widget for logged-in administrators.
@@ -103,6 +111,12 @@ This plugin bundles the **Press Start 2P** font by Cody Boisclair, licensed unde
 3. The cookie declaration on the front end: intro text, the visitor's consent status and the detected services grouped by category.
 
 == Changelog ==
+
+= 1.1.0 =
+* The consent widget is now printed as the very first element in `<head>` (before scripts of other plugins and the theme), so trackers such as Google Analytics, Tag Manager or Matomo are blocked before consent and Google Consent Mode defaults are set in time.
+* The widget script is excluded from JavaScript optimisation (defer, delay, combine) of WP Rocket, LiteSpeed Cache, Autoptimize, Jetpack Boost and Cloudflare Rocket Loader, which would otherwise load it too late.
+* New filter `crumbler_cc_widget_priority` to change the `wp_head` priority.
+* Requires WordPress 5.7 or later.
 
 = 1.0.0 =
 * Initial public release.
